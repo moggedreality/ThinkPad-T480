@@ -1,0 +1,2276 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>T480 Believers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: a field-manual dossier. Black ground, oxblood-to-red glow, taped index cards tilted a hair off true, red marker notes in the margins. Opens with a 3D ThinkPad lid lifting and booting, then the page wakes up behind it. */
+:root {
+  --bg: #0a0506;
+  --card: #130a0c;
+  --ink: #f2e8e3;
+  --mute: #b39a97;
+  --line: rgba(242, 232, 227, 0.14);
+  --red: #ff2d3d;
+  --crimson: #c4001f;
+  --oxblood: #4a0713;
+  --ember: #ff9a5c;
+  --ok: #67d495;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --tp: "IBM Plex Sans", "SF Pro Display", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --hand: "Caveat", "Segoe Script", "Bradley Hand", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-color: #5a0a15 var(--bg); }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--display); font-size: 17px; line-height: 1.6; font-weight: 400;
+  -webkit-font-smoothing: antialiased; text-wrap: pretty; overflow-x: clip;
+}
+::selection { background: var(--red); color: #fff; }
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay; z-index: 50;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+a { color: var(--red); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ember); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); position: relative; }
+
+/* the red dot on the i */
+.idot { position: relative; display: inline-block; line-height: 1; }
+.idot::after {
+  content: ""; position: absolute; left: 50%; top: var(--dy, 0.1em); width: 0.2em; height: 0.2em;
+  transform: translate(-50%, -50%); background: var(--red); border-radius: 50%;
+  box-shadow: 0 0 0.35em 0.08em rgba(255, 45, 61, 0.85); animation: pulse 2.8s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ---------- intro ---------- */
+.intro {
+  position: fixed; inset: 0; z-index: 100; overflow: hidden;
+  background: radial-gradient(900px 600px at 50% 58%, rgba(196, 0, 31, 0.34), transparent 70%), linear-gradient(180deg, #040203, #14060a);
+  animation: introOut 0.9s ease 5.3s forwards;
+}
+.intro.gone { display: none; }
+@keyframes introOut { to { opacity: 0; visibility: hidden; } }
+.intro::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 45%, rgba(255, 130, 130, 0.5), transparent 60%); animation: bloom 0.9s ease 4.6s forwards; }
+@keyframes bloom { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+.skip {
+  position: absolute; z-index: 5; top: calc(env(safe-area-inset-top, 0px) + 14px); right: max(16px, env(safe-area-inset-right, 0px));
+  font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink);
+  background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line); border-radius: 999px; padding: 0.5rem 0.95rem; cursor: pointer;
+}
+.skip:hover { border-color: var(--red); }
+.rig {
+  position: absolute; left: 50%; top: 60%; width: 52em; height: 35.6em; margin: -17.8em 0 0 -26em;
+  font-size: min(1.7vw, 1.3vh, 12px); perspective: 170em; animation: dive 1.1s cubic-bezier(0.55, 0, 0.9, 0.4) 4.4s both;
+}
+@keyframes dive { from { transform: scale(1); } to { transform: scale(1.7); } }
+.tilt { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform 0.35s ease-out; }
+.lap { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(62deg) rotateZ(-12deg); animation: orbit 3.6s cubic-bezier(0.3, 0.1, 0.2, 1) 0.4s both; }
+@keyframes orbit { from { transform: rotateX(54deg) rotateZ(-58deg); } to { transform: rotateX(62deg) rotateZ(-12deg); } }
+.lap::before {
+  content: ""; position: absolute; left: -14em; right: -14em; top: -12em; bottom: -10em; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 45, 61, 0.34), rgba(255, 45, 61, 0.07) 62%, transparent);
+  transform: translateZ(-1.8em); animation: glowUp 1.4s ease 2.2s both;
+}
+@keyframes glowUp { from { opacity: 0.4; } to { opacity: 1; } }
+.base {
+  position: absolute; inset: 0; border-radius: 1.3em; transform-style: preserve-3d;
+  background: linear-gradient(168deg, #212125 0%, #101012 55%, #08080a);
+  box-shadow: inset 0 0 0 0.12em #2b2b30, inset 0 0.3em 0.6em rgba(255, 255, 255, 0.05);
+}
+.base::before, .cover::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: 0.1; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.base .edge { position: absolute; left: 0; right: 0; bottom: 0; height: 1.9em; transform-origin: 50% 100%; transform: rotateX(90deg); background: linear-gradient(180deg, #19191c, #050506); border-radius: 0 0 1.1em 1.1em; }
+.bump { position: absolute; left: 6.5em; right: 6.5em; top: -0.2em; height: 2.7em; border-radius: 0.9em; background: linear-gradient(180deg, #232327, #0b0b0d); box-shadow: inset 0 0 0 0.1em #2a2a2f, 0 0.4em 0.8em rgba(0, 0, 0, 0.5); transform: translateZ(0.55em); }
+.bump::after { content: ""; position: absolute; left: 12%; right: 12%; top: 50%; height: 0.14em; background: repeating-linear-gradient(90deg, #35353b 0 0.5em, transparent 0.5em 0.9em); opacity: 0.7; }
+.hinge { position: absolute; top: -1.1em; width: 7.5em; height: 2.4em; border-radius: 0.9em; background: linear-gradient(180deg, #3b3b42, #0a0a0b); transform: translateZ(0.95em); box-shadow: 0 0 0 0.1em #1a1a1d; }
+.hinge.l { left: 2.6em; } .hinge.r { right: 2.6em; }
+.pwr { position: absolute; right: 3.2em; top: 1.15em; width: 2.9em; height: 1.5em; border-radius: 0.4em; background: linear-gradient(180deg, #1f1f23, #121214); box-shadow: inset 0 0 0 0.1em #2d2d32, 0 0.15em 0 #050506; }
+.pwr u { position: absolute; left: 50%; top: 50%; width: 0.5em; height: 0.5em; margin: -0.25em 0 0 -0.25em; border-radius: 50%; background: #fff; box-shadow: 0 0 0.9em 0.25em rgba(255, 255, 255, 0.8); opacity: 0; animation: ledOn 0.3s ease 2.1s forwards, breathe 3s ease-in-out 2.4s infinite; }
+@keyframes ledOn { to { opacity: 1; } }
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.deck { position: absolute; left: 4.2em; right: 4.2em; top: 3.8em; bottom: 15.4em; }
+.well { position: absolute; inset: -0.7em -0.8em; border-radius: 0.6em; background: #050506; box-shadow: inset 0 0 0 0.1em #1b1b1f, inset 0 0.3em 0.8em rgba(0, 0, 0, 0.8); }
+.kb { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 0.45em; }
+.kb .r { display: flex; gap: 0.45em; flex: 1; min-height: 0; }
+.kb .r:first-of-type { flex: 0.62; }
+.kb .sp { flex: 0.3; background: none; box-shadow: none; animation: none; }
+.kb i {
+  display: grid; place-items: center; min-width: 0; border-radius: 0.5em 0.5em 0.6em 0.6em; background: linear-gradient(180deg, #202024, #121214);
+  box-shadow: 0 0.22em 0 #050506, inset 0 0.1em 0 rgba(255, 255, 255, 0.08), inset 0 -0.25em 0.3em rgba(0, 0, 0, 0.35);
+  font: 700 0.78em/1 Arial, Helvetica, sans-serif; color: #a9a9b1; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden;
+  animation: keylight 0.7s ease calc(2.3s + var(--d, 0s)) both;
+}
+.kb i::before { content: attr(data-l); }
+@keyframes keylight {
+  40% { background: linear-gradient(180deg, #5a1a22, #2a0a10); color: #ffd3d6; box-shadow: 0 0.22em 0 #050506, 0 0 1em rgba(255, 45, 61, 0.55); }
+  to { background: linear-gradient(180deg, #27272c, #151518); color: #c9c9d0; box-shadow: 0 0.22em 0 #050506, inset 0 0.1em 0 rgba(255, 255, 255, 0.12), 0 0 0.6em rgba(255, 140, 120, 0.1); }
+}
+.kb i.ud { background: none; box-shadow: none; animation: none; display: flex; flex-direction: column; gap: 0.3em; padding: 0; overflow: visible; }
+.kb i.ud::before { content: none; }
+.kb i.ud b { flex: 1; display: grid; place-items: center; font-size: 0.7em; border-radius: 0.35em; background: linear-gradient(180deg, #27272c, #151518); box-shadow: 0 0.18em 0 #050506, inset 0 0.1em 0 rgba(255, 255, 255, 0.1); animation: keylight 0.7s ease calc(2.3s + var(--d, 0s)) both; }
+.nub { position: absolute; left: 45%; top: 65%; width: 1.15em; height: 1.15em; margin: -0.58em 0 0 -0.58em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff8d95, #e0001b 58%, #6d000f); box-shadow: 0 0 1em 0.2em rgba(255, 45, 61, 0.65), 0 0.15em 0.3em rgba(0, 0, 0, 0.7); animation: pulse 2.4s ease-in-out infinite; }
+.tpb { position: absolute; left: 50%; bottom: 12.7em; width: 15.3em; height: 1.9em; margin-left: -7.65em; display: flex; gap: 0.3em; }
+.tpb i { flex: 1; border-radius: 0.3em 0.3em 0.5em 0.5em; background: linear-gradient(180deg, #19191c, #0e0e10); box-shadow: inset 0 0.1em 0 rgba(255, 255, 255, 0.08), 0 0.12em 0 #050506; }
+.tpb i:nth-child(2) { flex: 0.7; background: repeating-linear-gradient(90deg, #1d1d21 0 0.2em, #121214 0.2em 0.4em); }
+.tp { position: absolute; left: 50%; bottom: 3.4em; width: 15.3em; height: 8.9em; margin-left: -7.65em; border-radius: 0.5em; background: linear-gradient(180deg, #0c0c0e, #070708); box-shadow: inset 0 0 0 0.1em #27272c, inset 0 0.2em 0.5em rgba(255, 255, 255, 0.03); }
+.fp { position: absolute; right: 7.2em; bottom: 6.2em; width: 2em; height: 2em; border-radius: 0.5em; background: radial-gradient(circle at 50% 40%, #1c1c21, #0a0a0c); box-shadow: inset 0 0 0 0.12em #2e2e33; }
+.fp::after { content: ""; position: absolute; inset: 0.45em; border-radius: 50%; border: 0.1em solid #34343a; }
+.stk { position: absolute; left: 4em; bottom: 3.5em; width: 4.4em; height: 3.2em; border-radius: 0.3em; background: linear-gradient(160deg, #2b2b30, #1a1a1e); box-shadow: inset 0 0 0 0.08em #3a3a40; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Arial, Helvetica, sans-serif; color: #b5b5bd; line-height: 1.1; }
+.stk b { font-size: 1.05em; font-style: italic; letter-spacing: -0.02em; } .stk span { font-size: 0.62em; letter-spacing: 0.08em; }
+.lid { position: absolute; left: 0; top: -34.6em; width: 100%; height: 34.6em; transform-origin: 50% 100%; transform-style: preserve-3d; transform: translateZ(0.95em) rotateX(-180deg); animation: lid 2.1s cubic-bezier(0.25, 0.6, 0.3, 1) 1s both; }
+@keyframes lid {
+  0% { transform: translateZ(0.95em) rotateX(-180deg); } 72% { transform: translateZ(0.95em) rotateX(-67deg); }
+  88% { transform: translateZ(0.95em) rotateX(-76deg); } 100% { transform: translateZ(0.95em) rotateX(-72deg); }
+}
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.cover { transform: rotateY(180deg); border-radius: 1.3em; background: linear-gradient(150deg, #1d1d21, #09090a 55%, #141416); box-shadow: inset 0 0 0 0.12em #2a2a2f; }
+.cover .mark { font-weight: 600; position: absolute; left: 3em; bottom: 2.6em; transform: rotate(180deg); font-family: var(--tp); font-size: 3.1em; letter-spacing: 0; color: #9d9da4; white-space: nowrap; }
+.cover .mark .idot { --dy: 0.12em; }
+.scr { border-radius: 1.3em 1.3em 0.5em 0.5em; background: #09090b; box-shadow: inset 0 0 0 0.12em #2a2a2f; padding: 2.3em 1.3em 4.5em; }
+.scr::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.1) 47%, transparent 56%); transform: translateX(-130%); animation: glare 1.5s ease 2.7s forwards; }
+@keyframes glare { to { transform: translateX(130%); } }
+.cam { position: absolute; left: 50%; top: 0.85em; width: 0.65em; height: 0.65em; margin-left: -0.33em; border-radius: 50%; background: #1b1b22; box-shadow: 0 0 0 0.15em #0f0f12; }
+.cam::before, .cam::after { content: ""; position: absolute; top: 0.12em; width: 0.4em; height: 0.4em; border-radius: 50%; background: #121216; }
+.cam::before { left: -2.2em; } .cam::after { left: 2.5em; }
+.shut { position: absolute; left: 50%; top: 0.4em; width: 3.6em; height: 0.26em; margin-left: -1.8em; border-radius: 0.2em; background: #1c1c21; }
+.bz { font-weight: 600; position: absolute; left: 1.6em; bottom: 1.5em; font-family: var(--tp); font-size: 1.15em; letter-spacing: 0.02em; color: #85858c; }
+.panel { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 0.3em; background: #000; opacity: 0; animation: screenOn 0.5s ease 2.2s forwards; }
+@keyframes screenOn { 0% { opacity: 0; } 30% { opacity: 1; filter: brightness(1.8); } to { opacity: 1; filter: none; } }
+.panel::before { content: ""; position: absolute; inset: 0; opacity: 0; background: radial-gradient(70% 80% at 50% 110%, rgba(255, 45, 61, 0.34), transparent 70%); animation: redGlow 0.8s ease 4.6s forwards; }
+@keyframes redGlow { to { opacity: 1; } }
+.panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px); animation: flick 2.4s steps(2) infinite; }
+@keyframes flick { 50% { opacity: 0.75; } }
+.splash { position: absolute; inset: 0; opacity: 0; animation: splashShow 1.5s ease 2.6s both; }
+@keyframes splashShow { 0% { opacity: 0; } 20%, 78% { opacity: 1; } 100% { opacity: 0; } }
+.splash .wm { position: absolute; left: 0; right: 0; top: 36%; text-align: center; font-family: var(--tp); font-weight: 600; font-size: 5.4em; color: #fff; }
+.splash small { position: absolute; left: 1.6em; bottom: 1.5em; font: 400 1.15em/1.2 Arial, Helvetica, sans-serif; color: #d9d9de; }
+.splash em { position: absolute; right: 1.6em; bottom: 1.2em; font: 700 2.1em/1 Arial, Helvetica, sans-serif; font-style: normal; color: #fff; letter-spacing: -0.01em; }
+.menu { position: absolute; inset: 1.6em 1.8em auto 1.8em; font-family: var(--mono); font-size: 1.5em; line-height: 1.7; color: #e6e6ea; animation: bootOut 0.3s ease 4.6s forwards; }
+.menu div { opacity: 0; animation: lineIn 0.2s ease forwards; white-space: nowrap; overflow: hidden; }
+.menu .mh { color: #fff; border-bottom: 1px solid #555; margin-bottom: 0.4em; padding-bottom: 0.2em; letter-spacing: 0.04em; }
+.menu div:nth-child(1) { animation-delay: 3.9s; } .menu div:nth-child(2) { animation-delay: 4.05s; } .menu div:nth-child(3) { animation-delay: 4.2s; }
+.menu div:nth-child(4) { animation-delay: 4.35s; } .menu div:nth-child(5) { animation-delay: 4.5s; }
+.menu kbd { font: inherit; display: inline-block; min-width: 3.3em; color: #ff7a84; }
+@keyframes lineIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bootOut { to { opacity: 0; } }
+.logo-end { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; opacity: 0; animation: logoIn 0.5s ease 4.8s forwards; z-index: 1; }
+@keyframes logoIn { to { opacity: 1; } }
+.logo-end b { font-family: var(--tp); font-weight: 700; font-size: 5.4em; letter-spacing: 0; line-height: 1; color: #fff; }
+.logo-end span { font-family: var(--mono); font-size: 1.3em; letter-spacing: 0.3em; color: #ff8a93; margin-top: 0.8em; display: block; }
+.cap { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px); height: 1.2em; text-align: center; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mute); }
+.cap span { position: absolute; left: 0; right: 0; opacity: 0; animation: capIn 1.8s ease both; }
+.cap span:nth-child(2) { animation-delay: 1.8s; } .cap span:nth-child(3) { animation-delay: 3.6s; animation-name: capLast; animation-duration: 1.4s; }
+@keyframes capIn { 0% { opacity: 0; transform: translateY(4px); } 18%, 78% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes capLast { 0% { opacity: 0; transform: translateY(4px); } 25%, 100% { opacity: 1; transform: none; } }
+.prog { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 52px); width: min(260px, 60vw); height: 2px; transform: translateX(-50%); background: rgba(255, 255, 255, 0.08); border-radius: 2px; overflow: hidden; }
+.prog i { display: block; height: 100%; background: linear-gradient(90deg, #ff2d3d, #ff9a5c); transform-origin: left; transform: scaleX(0); animation: progress 5.1s linear 0.1s forwards; }
+@keyframes progress { to { transform: scaleX(1); } }
+
+/* ---------- chrome: scroll bar, dock ---------- */
+.scrollbar { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 70; transform-origin: left; transform: scaleX(var(--p, 0)); background: linear-gradient(90deg, #ff2d3d, #ff9a5c); box-shadow: 0 0 12px rgba(255, 45, 61, 0.7); }
+.dock {
+  position: fixed; z-index: 60; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 12px);
+  transform: translate(-50%, -170%); opacity: 0; transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.4s;
+  max-width: calc(100vw - 24px); background: rgba(14, 6, 8, 0.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem; box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 45, 61, 0.08);
+}
+.dock.show { transform: translate(-50%, 0); opacity: 1; }
+.dock-in { display: flex; gap: 0.1rem; overflow-x: auto; scrollbar-width: none; position: relative; }
+.dock-in::-webkit-scrollbar { display: none; }
+.dock a { position: relative; z-index: 1; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); text-decoration: none; padding: 0.5rem 0.8rem; border-radius: 999px; white-space: nowrap; transition: color 0.25s; }
+.dock a:hover { color: var(--ink); }
+.dock a.on { color: #fff; }
+.dock .pill { position: absolute; top: 0; bottom: 0; left: 0; width: 0; border-radius: 999px; background: linear-gradient(100deg, #ff2d3d, #b0001c); z-index: 0; box-shadow: 0 0 18px rgba(255, 45, 61, 0.5); transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.9, 0.2, 1); }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem); padding-bottom: 4rem;
+  background: radial-gradient(900px 520px at 78% 12%, rgba(255, 45, 61, 0.34), transparent 70%), radial-gradient(700px 480px at 8% 92%, rgba(196, 0, 31, 0.3), transparent 70%), linear-gradient(180deg, var(--oxblood) 0%, var(--bg) 94%);
+  overflow: hidden;
+}
+.hero-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(520px circle at var(--hx, 72%) var(--hy, 18%), rgba(255, 80, 90, 0.2), transparent 62%); }
+.embers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.kicker { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; align-items: center; }
+.logo { font-weight: 700; letter-spacing: -0.01em; color: var(--ink); font-size: 1.05rem; text-transform: none; font-family: var(--tp); }
+.big { display: flex; font-family: var(--tp); font-weight: 400; font-size: clamp(3.6rem, 18.5vw, 12.5rem); line-height: 1; letter-spacing: -0.02em; margin: 1.4rem 0 0.2rem; }
+.big span {
+  display: inline-block; color: transparent; -webkit-background-clip: text; background-clip: text;
+  background-image: linear-gradient(100deg, #ff6a6f 0%, #ff1f35 38%, #b0001c 72%, #5b0010 100%); background-size: 400% 100%; background-position: calc(var(--i) * 33.333%) 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1), filter 0.35s; padding-right: 0.01em;
+}
+.big span:hover { transform: translateY(-0.05em); filter: drop-shadow(0 0 0.12em rgba(255, 45, 61, 0.6)); }
+.thesis { font-size: clamp(1.4rem, 3.6vw, 2.3rem); line-height: 1.2; font-weight: 600; letter-spacing: -0.015em; max-width: 22em; margin: 1.2rem 0 1.4rem; text-wrap: balance; }
+.thesis u { text-decoration: none; background: linear-gradient(transparent 62%, rgba(255, 45, 61, 0.55) 62%) no-repeat 0 0 / 0% 100%; padding: 0 0.1em; transition: background-size 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s; }
+.ready .thesis u, html:not(.js) .thesis u { background-size: 100% 100%; }
+.lede { max-width: 34em; color: var(--mute); font-size: 1.05rem; }
+.lede b { color: var(--ink); font-weight: 600; }
+.hand { font-family: var(--hand); color: var(--ember); font-size: 1.45rem; line-height: 1.1; font-weight: 700; }
+.hero .hand { margin-top: 1.4rem; display: block; transform: rotate(-1.5deg); }
+mark { background: linear-gradient(transparent 55%, rgba(255, 45, 61, 0.5) 55%); color: inherit; padding: 0 0.1em; }
+.js .rise { opacity: 0; translate: 0 26px; }
+.js.ready .rise { animation: riseIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--i, 0) * 90ms) forwards; }
+@keyframes riseIn { to { opacity: 1; translate: 0 0; } }
+.js .big span { opacity: 0; translate: 0 45%; filter: blur(14px); }
+.js.ready .big span { animation: letterIn 1.1s cubic-bezier(0.2, 0.9, 0.2, 1) calc(var(--i) * 120ms + 60ms) forwards; }
+@keyframes letterIn { to { opacity: 1; translate: 0 0; filter: blur(0); } }
+
+.reel { position: relative; overflow: hidden; margin-top: 2.2rem; max-width: 46rem; border-radius: 16px; padding: 1.1rem 1.3rem 1.3rem; background: linear-gradient(160deg, rgba(255, 45, 61, 0.18), rgba(10, 5, 6, 0.9)); border: 1px solid rgba(255, 45, 61, 0.6); box-shadow: 0 0 0 1px rgba(255, 45, 61, 0.15), 0 24px 60px -24px rgba(255, 45, 61, 0.6); }
+.reel::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.13) 50%, transparent 60%); transform: translateX(-130%); animation: sweep 5.5s ease-in-out 7s infinite; }
+@keyframes sweep { 0% { transform: translateX(-130%); } 35%, 100% { transform: translateX(130%); } }
+.reel-h { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
+.reel-h::before { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--red); box-shadow: 0 0 10px var(--red); animation: pulse 2s ease-in-out infinite; }
+.reel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 125px), 1fr)); gap: 1.1rem 1.4rem; }
+.reel-grid > div { min-width: 0; }
+.reel-grid b { display: block; font-size: 2.6rem; line-height: 1; letter-spacing: -0.04em; font-weight: 800; font-variant-numeric: tabular-nums; background: linear-gradient(100deg, #ffa0a6, #ff2d3d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.reel-grid b small { font-size: 0.95rem; letter-spacing: 0.02em; margin-left: 0.25rem; font-weight: 600; -webkit-text-fill-color: var(--mute); color: var(--mute); }
+.reel-grid span { display: block; font-size: 0.85rem; color: var(--mute); line-height: 1.35; margin-top: 0.4rem; }
+.jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.2rem; }
+.jump a { font-family: var(--mono); font-size: 0.74rem; padding: 0.4rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); text-decoration: none; background: rgba(0, 0, 0, 0.3); transition: border-color 0.25s, transform 0.25s, background 0.25s; }
+.jump a:hover { border-color: var(--red); transform: translateY(-2px); background: rgba(255, 45, 61, 0.12); color: var(--ink); }
+
+/* ---------- ticker ---------- */
+.ticker { overflow: hidden; border-block: 1px solid var(--line); background: rgba(0, 0, 0, 0.4); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ticker-track { display: flex; width: max-content; animation: tick 55s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker ul { display: flex; list-style: none; margin: 0; padding: 0.9rem 0; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); white-space: nowrap; }
+.ticker li { display: flex; align-items: center; }
+.ticker li::before { content: ""; width: 0.42rem; height: 0.42rem; margin: 0 2.2rem; transform: rotate(45deg); background: var(--red); box-shadow: 0 0 8px rgba(255, 45, 61, 0.7); }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- sections, reveal, spotlight ---------- */
+section { padding: 4.5rem 0 1rem; scroll-margin-top: 4.5rem; }
+.eyebrow { font-family: var(--tp); font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin: 0 0 0.8rem; }
+h2 { font-size: clamp(2rem, 5.4vw, 3.6rem); line-height: 1.02; letter-spacing: -0.03em; font-weight: 800; margin: 0 0 1rem; text-wrap: balance; max-width: 16em; }
+h2 em { font-style: normal; background: linear-gradient(100deg, #ff6a6f, #e0001b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+h2::after { content: ""; display: block; width: min(260px, 60%); height: 14px; margin-top: 0.7rem; clip-path: inset(0 100% 0 0); transition: clip-path 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 14' preserveAspectRatio='none'><path d='M2 9 C 30 2, 54 13, 90 7 S 160 3, 258 8' fill='none' stroke='%23ff2d3d' stroke-width='3' stroke-linecap='round'/></svg>") center / 100% 100% no-repeat; }
+h2.in::after, html:not(.js) h2::after { clip-path: inset(0 0 0 0); }
+.sub { color: var(--mute); max-width: 40em; margin: 0 0 2rem; }
+.note { color: var(--mute); font-size: 0.92rem; max-width: 46em; margin: 1.2rem 0 0; }
+@supports (animation-timeline: view()) {
+  .reveal { animation: revealIn linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @keyframes revealIn { from { opacity: 0.2; translate: 0 34px; } to { opacity: 1; translate: 0 0; } }
+}
+.spot { position: relative; }
+.spot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.35s; background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 60, 75, 0.17), transparent 65%); }
+.spot:hover::after { opacity: 1; }
+.btn { font-family: var(--mono); font-size: 0.82rem; color: #fff; background: linear-gradient(100deg, #ff2d3d, #b0001c); border: 0; border-radius: 999px; padding: 0.65rem 1.1rem; cursor: pointer; box-shadow: 0 10px 30px -10px rgba(255, 45, 61, 0.7); transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(255, 45, 61, 0.85); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn.ghost { background: transparent; border: 1px solid var(--line); box-shadow: none; color: var(--ink); }
+.btn.ghost:hover { border-color: var(--red); }
+
+/* ---------- power bench + hot-swap ---------- */
+.bench { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 2.4rem; align-items: start; }
+.panel2 { background: linear-gradient(160deg, #1a0a0e, #0e0709); border: 1px solid var(--line); border-radius: 14px; padding: 1.4rem; box-shadow: 0 30px 60px -30px rgba(255, 45, 61, 0.25); min-width: 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+.seg button { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.5rem 0.95rem; cursor: pointer; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+.seg button:hover { border-color: var(--red); transform: translateY(-1px); }
+.seg button[aria-pressed="true"] { background: linear-gradient(100deg, #ff2d3d, #b0001c); border-color: transparent; color: #fff; }
+.cells { display: flex; gap: 6px; height: 74px; margin-bottom: 0.9rem; }
+.cell { position: relative; overflow: hidden; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.8rem; color: #fff; transition: flex-grow 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s; min-width: 0; white-space: nowrap; }
+.cell::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, 0.22) 50%, transparent 65%); transform: translateX(-120%); animation: cellSweep 4.5s ease-in-out infinite; }
+.cell.ex::after { animation-delay: 1.2s; }
+@keyframes cellSweep { 0% { transform: translateX(-120%); } 40%, 100% { transform: translateX(120%); } }
+.cell.int { background: linear-gradient(135deg, #7a0013, #3a050e); border: 1px solid rgba(255, 45, 61, 0.35); }
+.cell.ex { background: linear-gradient(135deg, #ff4a55, #c4001f); }
+.cell.empty { flex-grow: 0 !important; opacity: 0; padding: 0; }
+.total { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.total .n { font-size: 3.4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.total .u { font-family: var(--mono); color: var(--mute); }
+.readout { color: var(--mute); min-height: 4.6em; margin: 0.8rem 0 0; font-size: 0.98rem; }
+.swap { margin-top: 1rem; border-top: 1px dashed var(--line); padding-top: 1.1rem; }
+.swap svg { display: block; width: 100%; height: auto; max-height: 240px; overflow: visible; }
+.sw-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1rem; margin-top: 0.5rem; }
+.sw-up { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 1.6rem; font-weight: 600; line-height: 1.1; }
+.sw-up small { display: block; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); font-weight: 400; margin-top: 0.2rem; }
+.sw-status { font-family: var(--mono); font-size: 0.78rem; color: var(--mute); min-height: 2.8em; display: flex; align-items: center; gap: 0.6rem; margin-top: 0.7rem; }
+.sw-led { flex: none; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0.8em var(--ok); transition: background 0.3s, box-shadow 0.3s; }
+.sw-led.amber { background: var(--ember); box-shadow: 0 0 0.8em var(--ember); }
+.pk { transition: transform 1s cubic-bezier(0.5, 0, 0.2, 1), opacity 0.7s; }
+.pk.park { transform: translate(-64px, -92px) rotate(-14deg); opacity: 0.5; }
+.flow { stroke-dasharray: 6 8; animation: flow 0.9s linear infinite; transition: opacity 0.4s; }
+.flow.off { opacity: 0.12; animation-play-state: paused; }
+@keyframes flow { to { stroke-dashoffset: -14; } }
+.screen-glow { animation: pulse 3.4s ease-in-out infinite; }
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+.steps li { counter-increment: s; padding: 0.85rem 0 0.85rem 3rem; position: relative; border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0.8rem; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 0.82rem; color: var(--red); border: 1px solid var(--red); }
+.steps b { font-weight: 700; }
+.fine { margin-top: 1.2rem; }
+
+/* ---------- spec vault ---------- */
+.vault { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 1.4rem; }
+.vcard { min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, #160a0d, #0d0708); padding: 1.2rem 1.2rem 1.1rem; transition: border-color 0.3s, transform 0.3s; }
+.vcard:hover { border-color: rgba(255, 45, 61, 0.45); }
+.vcard.full { grid-column: 1 / -1; }
+.vcard h3 { margin: 0 0 0.2rem; font-size: 1.25rem; letter-spacing: -0.01em; }
+.tag { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.5rem; }
+.vcard p { margin: 0.4rem 0 0.9rem; color: var(--mute); font-size: 0.94rem; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: rgba(0, 0, 0, 0.25); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+.vt { min-width: 440px; } .vt.wide { min-width: 760px; }
+th, td { text-align: left; padding: 0.75rem 0.95rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); font-weight: 400; }
+tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background 0.2s; }
+tbody tr:hover { background: rgba(255, 45, 61, 0.07); }
+.vt td:first-child { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+.vt td { color: var(--mute); }
+.vt td:first-child, .vt td.k { color: var(--ink); }
+.hl { color: #ff8a93; }
+.ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.ul li { position: relative; padding-left: 1.3rem; color: var(--mute); font-size: 0.94rem; min-width: 0; }
+.ul li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: linear-gradient(135deg, #ff4a55, #8b0014); }
+.ul li b { color: var(--ink); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.9rem; }
+.chips span { font-family: var(--mono); font-size: 0.74rem; padding: 0.25rem 0.6rem; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); }
+.rng { margin: 0.4rem 0 1rem; }
+.rng-axis { position: relative; height: 1.2rem; margin: 0 6.8rem 0 7.2rem; font-family: var(--mono); font-size: 0.66rem; color: var(--mute); }
+.rng-axis span { position: absolute; transform: translateX(-50%); }
+.rng-row { display: flex; align-items: center; gap: 0.8rem; height: 2rem; }
+.rng-row b { width: 6.4rem; flex: none; font-family: var(--mono); font-size: 0.76rem; font-weight: 600; }
+.rng-track { position: relative; flex: 1; height: 0.7rem; border-radius: 0.4rem; background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px) 0 0 / 16.6667% 100%, rgba(255, 255, 255, 0.04); }
+.rng-bar { position: absolute; top: 0; bottom: 0; left: var(--l); width: 0; border-radius: 0.4rem; background: linear-gradient(90deg, #8b0014, #ff4a55); box-shadow: 0 0 14px rgba(255, 45, 61, 0.45); transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) var(--dl, 0s); }
+.in .rng-bar, html:not(.js) .rng-bar { width: var(--w); }
+.rng-v { width: 6rem; flex: none; text-align: right; font-family: var(--mono); font-size: 0.72rem; color: var(--mute); }
+.res { display: block; width: 100%; max-width: 360px; margin: 0.2rem 0 1rem; overflow: visible; }
+.res rect { fill: none; stroke-width: 1.2; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) var(--dl, 0s); }
+.in .res rect, html:not(.js) .res rect { stroke-dashoffset: 0; }
+.res text { font-family: var(--mono); font-size: 7px; fill: #b39a97; }
+
+/* ---------- index cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.8rem 1.6rem; padding: 0.6rem 0; }
+.card { position: relative; min-width: 0; background: linear-gradient(170deg, #1b0b0f 0%, var(--card) 60%); border: 1px solid var(--line); border-radius: 6px; padding: 1.7rem 1.4rem 1.4rem; transform: rotate(var(--tilt, 0deg)); transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1), border-color 0.25s; }
+.card:nth-child(4n + 1) { --tilt: -0.7deg; } .card:nth-child(4n + 2) { --tilt: 0.5deg; } .card:nth-child(4n + 3) { --tilt: -0.3deg; } .card:nth-child(4n + 4) { --tilt: 0.8deg; }
+.card:hover { transform: rotate(0deg) translateY(-4px); border-color: rgba(255, 45, 61, 0.6); }
+.card::before { content: ""; position: absolute; top: -11px; left: 50%; width: 76px; height: 22px; margin-left: -38px; background: rgba(255, 45, 61, 0.28); border-left: 1px dashed rgba(255, 255, 255, 0.18); border-right: 1px dashed rgba(255, 255, 255, 0.18); transform: rotate(calc(var(--tilt, 0deg) * -4 + 1deg)); z-index: 2; }
+.card h3 { margin: 0 0 0.5rem; font-size: 1.35rem; line-height: 1.15; letter-spacing: -0.015em; font-weight: 700; }
+.card p { margin: 0; color: var(--mute); font-size: 0.98rem; }
+.card .hand { margin-top: 0.9rem; display: block; font-size: 1.3rem; }
+.card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.6rem; align-items: center; }
+
+/* ---------- coreboot ---------- */
+.core { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+.term { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #060303; min-width: 0; box-shadow: 0 30px 60px -34px rgba(255, 45, 61, 0.35); }
+.term-bar { display: flex; gap: 0.4rem; align-items: center; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 0.72rem; color: var(--mute); letter-spacing: 0.08em; }
+.term-bar i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #3a1a1e; }
+.term-bar i:first-child { background: var(--red); }
+.term-bar span { margin-left: 0.6rem; }
+.term-body { padding: 1rem 1.1rem 1.2rem; font-family: var(--mono); font-size: 0.82rem; line-height: 1.75; color: #ffb0b5; overflow-x: auto; min-height: 21rem; }
+.term-body .c { color: var(--mute); }
+.term-body .okk { color: var(--ok); } .term-body .bad { color: var(--red); }
+.term-body .row { display: flex; gap: 0.8rem; white-space: nowrap; }
+.term-body .row b { min-width: 2.4rem; font-weight: 600; }
+.term-body .ln { transition: opacity 0.25s, translate 0.25s; }
+.typing .ln:not(.vis) { opacity: 0; translate: -6px 0; }
+.cursor::after { content: "_"; color: var(--red); animation: blink 0.9s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.flash { margin-top: 1.1rem; border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; background: rgba(0, 0, 0, 0.25); }
+.flash-h { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); margin-bottom: 0.8rem; }
+.blocks { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; }
+.blocks i { aspect-ratio: 1 / 1.3; border-radius: 3px; background: rgba(255, 255, 255, 0.07); transition: background 0.2s, box-shadow 0.2s; }
+.blocks i.w { background: linear-gradient(180deg, #ff4a55, #b0001c); box-shadow: 0 0 8px rgba(255, 45, 61, 0.6); }
+.blocks i.v { background: linear-gradient(180deg, #67d495, #2f8a58); box-shadow: 0 0 8px rgba(103, 212, 149, 0.5); }
+.flash small { display: block; margin-top: 0.7rem; color: var(--mute); font-size: 0.8rem; }
+.warn { margin-top: 1rem; border: 1px dashed rgba(255, 45, 61, 0.6); border-radius: 10px; padding: 0.8rem 1rem; color: var(--mute); font-size: 0.92rem; }
+.warn b { color: var(--red); font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
+
+/* ---------- cooling ---------- */
+.cool { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.heat { border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(160deg, #1a0a0e, #0e0709); padding: 1.2rem; min-width: 0; }
+.heat svg { display: block; width: 100%; height: auto; overflow: visible; }
+.heat .seg { margin-bottom: 0.8rem; }
+.heat-read { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 1.2rem; margin-top: 0.8rem; font-size: 0.92rem; color: var(--mute); }
+.heat-read b { color: var(--ink); font-family: var(--mono); font-size: 1.15rem; display: block; }
+.pipe { fill: none; stroke: #c4001f; stroke-width: 6; stroke-linecap: round; }
+.pipe-flow { fill: none; stroke: #ffb0b5; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 10; animation: flow 0.8s linear infinite; }
+.pipe2 { transition: opacity 0.5s; }
+.fan { transform-origin: 392px 110px; animation: spin 1.1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hot { transition: opacity 0.6s; }
+.bars { display: grid; gap: 1.2rem; margin-top: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.bar { min-width: 0; }
+.bar-h { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.bar-h b { font-weight: 700; }
+.bar-h span { font-family: var(--mono); font-size: 0.8rem; color: var(--mute); }
+.track { height: 2.4rem; border-radius: 8px; background: rgba(255, 255, 255, 0.05); overflow: hidden; }
+.fill { height: 100%; width: 0; border-radius: 8px; display: flex; align-items: center; padding-left: 0.8rem; font-family: var(--mono); font-size: 0.8rem; color: #fff; white-space: nowrap; transition: width 1.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.in .fill, html:not(.js) .fill { width: var(--w); }
+.fill.a { background: linear-gradient(90deg, #5a0a15, #8b0014); }
+.fill.b { background: linear-gradient(90deg, #ff4a55, #c4001f); }
+.bar-n { font-size: 0.88rem; color: var(--mute); margin-top: 0.4rem; }
+
+/* ---------- mods ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.filters button { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.85rem; cursor: pointer; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+.filters button:hover { border-color: var(--red); transform: translateY(-1px); }
+.filters button[aria-pressed="true"] { background: linear-gradient(100deg, #ff2d3d, #b0001c); border-color: transparent; color: #fff; }
+.filters button span { opacity: 0.7; margin-left: 0.3rem; }
+.mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.mod { padding: 1.4rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; min-width: 0; background: linear-gradient(180deg, rgba(255, 45, 61, 0.05), transparent); transition: background 0.3s; }
+.mod:hover { background: linear-gradient(180deg, rgba(255, 45, 61, 0.12), rgba(255, 45, 61, 0.02)); }
+.mod.pop { animation: pop 0.5s cubic-bezier(0.2, 0.9, 0.2, 1); }
+@keyframes pop { from { opacity: 0; transform: scale(0.94) translateY(10px); } }
+.mod .from { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); display: flex; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+.mod .from em { font-style: normal; color: var(--mute); letter-spacing: 0.06em; text-transform: none; }
+.mod h3 { margin: 0.4rem 0; font-size: 1.15rem; line-height: 1.2; }
+.mod p { margin: 0; color: var(--mute); font-size: 0.93rem; }
+.meter { display: inline-flex; gap: 3px; vertical-align: middle; margin-left: 0.4rem; }
+.meter i { width: 0.55rem; height: 0.55rem; border-radius: 2px; background: rgba(255, 255, 255, 0.12); }
+.meter i.f { background: linear-gradient(135deg, #ff4a55, #b0001c); box-shadow: 0 0 6px rgba(255, 45, 61, 0.6); }
+
+/* ---------- ledger ---------- */
+.ledger { min-width: 620px; font-size: 0.97rem; }
+.ledger td:first-child { color: var(--mute); font-family: var(--mono); font-size: 0.8rem; width: 22%; }
+.ledger th.me, .ledger td.me { background: linear-gradient(180deg, rgba(255, 45, 61, 0.14), rgba(255, 45, 61, 0.04)); }
+.ledger th.me { color: var(--red); }
+.win { color: #ff8a93; font-weight: 600; }
+.scroll.big-s { background: linear-gradient(180deg, #160a0d, #0d0708); border-radius: 12px; }
+.rt { margin-top: 1.6rem; display: grid; gap: 0.7rem; max-width: 640px; }
+.rt-row { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 3.4rem; gap: 0.8rem; align-items: center; font-family: var(--mono); font-size: 0.78rem; }
+.rt-row .track { height: 1.1rem; border-radius: 6px; }
+.rt-row .fill { border-radius: 6px; padding: 0; }
+.rt-row em { font-style: normal; color: var(--mute); text-align: right; }
+
+/* ---------- honest ---------- */
+.fix { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.fix p { color: var(--mute); margin: 0 0 1rem; }
+.fix p b { color: var(--ink); }
+.code { font-family: var(--mono); font-size: 0.82rem; background: #060303; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; overflow-x: auto; color: #ffb0b5; line-height: 1.7; }
+.code span { color: var(--mute); }
+
+/* ---------- verdict + footer ---------- */
+.verdict { margin-top: 5rem; padding: 4.5rem 0; background: radial-gradient(800px 400px at 50% 0%, rgba(255, 45, 61, 0.28), transparent 70%), linear-gradient(180deg, var(--bg), var(--oxblood)); border-top: 1px solid var(--line); }
+.verdict h2 { max-width: 14em; }
+.verdict p { color: var(--mute); max-width: 36em; font-size: 1.1rem; }
+.sig { font-family: var(--hand); font-size: 2rem; color: var(--ember); transform: rotate(-2deg); display: inline-block; margin-top: 0.8rem; }
+footer { padding: 2.6rem 0 3.2rem; background: var(--oxblood); border-top: 1px solid var(--line); }
+footer h4 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); margin: 0 0 1rem; font-weight: 400; }
+footer ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0.45rem 2rem; font-size: 0.9rem; }
+footer li { min-width: 0; overflow-wrap: anywhere; }
+footer .small { color: var(--mute); font-size: 0.82rem; margin-top: 1.4rem; max-width: 46em; }
+.foot-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
+
+@media (max-width: 780px) {
+  .bench, .fix, .card.wide, .core, .cool { grid-template-columns: minmax(0, 1fr); }
+  section { padding-top: 3.4rem; }
+  .rng-v { display: none; } .rng-axis { margin: 0 0 0 6rem; } .rng-row b { width: 5.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .intro { display: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .ticker-track { animation: none; }
+}
+.reel-grid b i { font-style: normal; }
+
+.lx { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 2rem; margin-top: 2.4rem; align-items: start; }
+.lx .term-body { min-height: 0; white-space: pre; font-size: 0.78rem; }
+.lx .term-body .p { color: var(--ember); } .lx .term-body .w { color: #fff1f1; }
+.lx-list { display: grid; gap: 0; }
+.lx-list div { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.lx-list b { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--red); letter-spacing: 0.04em; margin-bottom: 0.3rem; font-weight: 600; }
+.lx-list p { margin: 0; color: var(--mute); line-height: 1.6; }
+@media (max-width: 780px) { .lx { grid-template-columns: minmax(0,1fr); } }
+
+@media (max-width: 780px) { .rig { font-size: 1.32vw; top: 52%; } }
+.probs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 2.4rem; }
+.prob { position: relative; min-width: 0; padding: 1.5rem 1.4rem 1.3rem; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, rgba(255, 45, 61, 0.06), transparent 60%), #0d0708; }
+.prob .top { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.7rem; }
+.chip2 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 999px; border: 1px solid var(--line); color: var(--mute); }
+.chip2.fsw { color: var(--ok); border-color: rgba(103, 212, 149, 0.4); }
+.chip2.fhw { color: var(--ember); border-color: rgba(255, 154, 92, 0.4); }
+.chip2.fopen { color: var(--red); border-color: rgba(255, 45, 61, 0.45); }
+.prob h3 { margin: 0 0 0.9rem; font-size: 1.3rem; line-height: 1.2; }
+.prob dl { margin: 0; display: grid; gap: 0.7rem; }
+.prob dt { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); }
+.prob dt.f { color: var(--ok); }
+.prob dd { margin: 0.15rem 0 0; color: var(--mute); font-size: 0.93rem; line-height: 1.6; }
+.prob dd b { color: var(--ink); font-weight: 600; }
+.prob .src { margin: 0.9rem 0 0; font-family: var(--mono); font-size: 0.68rem; color: var(--mute); opacity: 0.8; }
+.wild { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.4rem; margin-top: 2.4rem; counter-reset: w; }
+.wcard { position: relative; min-width: 0; padding: 1.5rem 1.4rem 1.3rem 4.3rem; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(135deg, rgba(255, 45, 61, 0.09), transparent 55%), #0d0708; overflow: hidden; }
+.wcard::before { counter-increment: w; content: counter(w, decimal-leading-zero); position: absolute; left: 1.1rem; top: 1.45rem; font-family: var(--tp); font-size: 1.2rem; color: var(--red); }
+.wcard h3 { margin: 0 0 0.45rem; font-size: 1.2rem; line-height: 1.2; }
+.wcard p { margin: 0 0 0.7rem; color: var(--mute); font-size: 0.93rem; line-height: 1.6; }
+.wcard .stat { font-family: var(--mono); font-size: 0.72rem; color: var(--ember); letter-spacing: 0.06em; }
+@media (max-width: 780px) { .probs, .wild { grid-template-columns: minmax(0, 1fr); } .wcard { padding-left: 3.6rem; } }
+:root { --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --display: var(--sf); }
+.js h2 .wd { display: inline-block; opacity: 0; transform: translateY(0.55em) rotate(2.5deg); filter: blur(9px); transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.9, 0.2, 1), filter 0.7s ease; transition-delay: calc(var(--i) * 55ms + 0.1s); }
+.js h2.in .wd { opacity: 1; transform: none; filter: none; }
+h2 em .wd { background: linear-gradient(100deg, #ff6a6f, #e0001b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.prob, .wcard, .fx { transition: transform 0.25s ease-out, border-color 0.3s; will-change: transform; }
+.prob:hover, .wcard:hover { border-color: rgba(255, 45, 61, 0.45); }
+.lap::after { content: ""; position: absolute; left: -4em; right: -4em; top: 10%; bottom: -14em; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, 0.7), transparent); transform: translateZ(-1.2em); filter: blur(1.2em); opacity: 0; animation: shadowIn 1.6s ease 1.6s forwards; }
+@keyframes shadowIn { to { opacity: 1; } }
+.uv { margin-top: 2.2rem; padding: 1.4rem 1.4rem 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, rgba(255, 45, 61, 0.07), transparent 70%), #0d0708; }
+.uv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+.uv-head b { white-space: nowrap; font-family: var(--sf); font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -0.03em; color: var(--ink); text-transform: none; font-variant-numeric: tabular-nums; }
+.uv-track { position: relative; height: 2.4rem; margin-top: 0.8rem; }
+.uv-zones { position: absolute; left: 0; right: 0; top: 50%; height: 10px; margin-top: -5px; display: flex; border-radius: 999px; overflow: hidden; }
+.uv-zones i { display: block; height: 100%; }
+.uv-zones .z1 { width: 35.3%; background: #2b6a4a; } .uv-zones .z2 { width: 23.5%; background: #67d495; }
+.uv-zones .z3 { width: 14.7%; background: #e2c35c; } .uv-zones .z4 { width: 20.6%; background: var(--ember); } .uv-zones .z5 { width: 5.9%; background: var(--red); }
+.uv-marks { position: absolute; left: 0; right: 0; top: 50%; pointer-events: none; }
+.uv-marks i { position: absolute; width: 8px; height: 8px; margin: -16px 0 0 -4px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #0d0708, 0 0 10px rgba(255, 255, 255, 0.7); }
+#uvr { position: absolute; inset: 0; width: 100%; margin: 0; background: none; -webkit-appearance: none; appearance: none; cursor: grab; }
+#uvr:active { cursor: grabbing; }
+#uvr::-webkit-slider-runnable-track { height: 2.4rem; background: transparent; }
+#uvr::-moz-range-track { height: 2.4rem; background: transparent; }
+#uvr::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: 0.9rem; border-radius: 50%; background: #fff; border: 4px solid var(--red); box-shadow: 0 0 18px rgba(255, 45, 61, 0.8); }
+#uvr::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 4px solid var(--red); box-shadow: 0 0 18px rgba(255, 45, 61, 0.8); }
+#uvr:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 8px; }
+.uv-scale span { position: absolute; top: 0; transform: translateX(-50%); }
+.uv-scale { position: relative; height: 1.1rem; font-family: var(--mono); font-size: 0.66rem; color: var(--mute); margin-top: 0.1rem; }
+.uv-zone { margin: 0.8rem 0 0.3rem; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+.uv-rep { margin: 0; color: var(--mute); font-size: 0.93rem; min-height: 3em; }
+.uv-foot { margin: 0.8rem 0 0; font-family: var(--mono); font-size: 0.68rem; color: var(--mute); opacity: 0.8; }
+.uv-gains { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 1rem; margin-top: 1.4rem; }
+.uv-gains div { padding: 1rem 1.1rem; border-radius: 12px; border: 1px solid rgba(255, 45, 61, 0.3); background: linear-gradient(160deg, rgba(255, 45, 61, 0.14), transparent); opacity: 0; transform: translateY(14px) scale(0.97); transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1); }
+.uv-gains.in div { opacity: 1; transform: none; } .uv-gains.in div:nth-child(2) { transition-delay: 0.1s; } .uv-gains.in div:nth-child(3) { transition-delay: 0.2s; } .uv-gains.in div:nth-child(4) { transition-delay: 0.3s; }
+html:not(.js) .uv-gains div { opacity: 1; transform: none; }
+.uv-gains b { display: block; font-size: 2rem; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(100deg, #ffa0a6, #ff2d3d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.uv-gains span { display: block; margin-top: 0.5rem; font-size: 0.84rem; color: var(--mute); line-height: 1.4; }
+.uv-table { margin-top: 1.8rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.uv-row { display: grid; grid-template-columns: 1.1fr 1fr 1.2fr 2.4fr; gap: 1rem; padding: 0.95rem 1.1rem; border-bottom: 1px solid var(--line); font-size: 0.88rem; color: var(--mute); line-height: 1.5; }
+.uv-row > span { min-width: 0; } .uv-row:last-child { border-bottom: 0; }
+.uv-row.hd { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); background: rgba(255, 45, 61, 0.07); }
+.uv-row b { color: var(--ink); font-weight: 600; } .uv-row em { font-style: normal; font-size: 0.76rem; opacity: 0.8; }
+.uv-how { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; margin-top: 2.2rem; align-items: start; }
+.uv-how .term-body { white-space: pre; font-size: 0.76rem; overflow-x: auto; }
+.uv-steps { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.9rem; color: var(--mute); font-size: 0.93rem; line-height: 1.55; }
+.uv-steps b { color: var(--ink); }
+.uv-gotchas { margin-top: 2rem; }
+.fx-h { margin: 3rem 0 1rem; font-size: 1.5rem; letter-spacing: -0.02em; }
+.fixgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0.9rem; }
+.fx { min-width: 0; padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 12px; background: #0d0708; }
+.fx b { display: block; font-size: 1.02rem; margin: 0.5rem 0 0.35rem; line-height: 1.25; }
+.fx p { margin: 0; color: var(--mute); font-size: 0.88rem; line-height: 1.55; }
+.fx code { font-family: var(--mono); font-size: 0.78rem; color: var(--ember); overflow-wrap: anywhere; }
+.os { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); }
+.os.l { color: #ffd166; border-color: rgba(255, 209, 102, 0.4); } .os.w { color: #6fb7ff; border-color: rgba(111, 183, 255, 0.4); } .os.b { color: var(--mute); }
+@media (max-width: 780px) { .uv-row { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; } .uv-row.hd { display: none; } .uv-how { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .js h2 .wd { opacity: 1; transform: none; filter: none; transition: none; } .uv-gains div { opacity: 1; transform: none; } }
+.cfg { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1.6rem; margin-top: 2.2rem; align-items: start; }
+.cfg-dials { display: grid; gap: 1.3rem; padding: 1.3rem 1.3rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, rgba(255, 45, 61, 0.07), transparent 70%), #0d0708; }
+.dial-h { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+.dial-h b { font-family: var(--sf); font-size: 1.15rem; letter-spacing: -0.01em; color: var(--ink); text-transform: none; font-weight: 700; text-align: right; }
+.dial-t { position: relative; height: 1.9rem; margin-top: 0.15rem; }
+.dial-t::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 6px; margin-top: -3px; border-radius: 999px; background: rgba(242, 232, 227, 0.12); }
+.dial-fill { position: absolute; left: 0; top: 50%; height: 6px; margin-top: -3px; width: calc(var(--p, 0) * 1%); border-radius: 999px; background: linear-gradient(90deg, var(--crimson), var(--red), var(--ember)); box-shadow: 0 0 14px rgba(255, 45, 61, 0.6); }
+.dial-t input, #uvr { -webkit-appearance: none; appearance: none; }
+.dial-t input { position: absolute; inset: 0; width: 100%; margin: 0; background: none; cursor: grab; }
+.dial-t input::-webkit-slider-runnable-track { height: 1.9rem; background: transparent; }
+.dial-t input::-moz-range-track { height: 1.9rem; background: transparent; }
+.dial-t input::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; margin-top: 0.3rem; border-radius: 50%; background: #fff; border: 4px solid var(--red); box-shadow: 0 0 16px rgba(255, 45, 61, 0.8); }
+.dial-t input::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 4px solid var(--red); box-shadow: 0 0 16px rgba(255, 45, 61, 0.8); }
+.dial-t input:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 8px; }
+.dial-s { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.62rem; color: var(--mute); gap: 0.3rem; }
+.dial-s span { min-width: 0; }
+.dial-s span.on { color: var(--ink); }
+.idle input::-webkit-slider-thumb { animation: thumbPulse 1.8s ease-in-out infinite; }
+.idle input::-moz-range-thumb { animation: thumbPulse 1.8s ease-in-out infinite; }
+@keyframes thumbPulse { 0%, 100% { box-shadow: 0 0 10px rgba(255, 45, 61, 0.6), 0 0 0 0 rgba(255, 45, 61, 0.5); } 50% { box-shadow: 0 0 22px rgba(255, 45, 61, 1), 0 0 0 9px rgba(255, 45, 61, 0); } }
+.cfg-sheet { padding: 1.3rem; border: 1px solid rgba(255, 45, 61, 0.35); border-radius: 14px; background: linear-gradient(160deg, rgba(255, 45, 61, 0.12), rgba(10, 5, 6, 0.9)); min-width: 0; }
+.sh-h { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
+.sh-row { padding: 0.7rem 0; border-bottom: 1px solid var(--line); min-width: 0; transition: background 0.5s; }
+.sh-row.flash { animation: shFlash 0.8s ease; }
+@keyframes shFlash { 0% { background: rgba(255, 45, 61, 0.28); } 100% { background: transparent; } }
+.sh-line { display: flex; flex-wrap: wrap; gap: 0.3rem 0.7rem; align-items: baseline; }
+.sh-k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); min-width: 5.2rem; }
+.sh-t { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.sh-p { display: block; margin-top: 0.15rem; font-family: var(--mono); font-size: 0.74rem; color: var(--ember); overflow-wrap: anywhere; }
+.sh-n { margin: 0.2rem 0 0; font-size: 0.84rem; color: var(--mute); line-height: 1.45; }
+.pc { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
+.pc.l { color: #6fb7ff; border-color: rgba(111, 183, 255, 0.45); } .pc.c { color: var(--ok); border-color: rgba(103, 212, 149, 0.45); } .pc.k { color: var(--ember); border-color: rgba(255, 154, 92, 0.5); }
+.meter { margin-top: 1rem; }
+.meter-bar { height: 10px; border-radius: 999px; background: rgba(242, 232, 227, 0.1); overflow: hidden; }
+.meter-bar i { display: block; height: 100%; width: calc(var(--m, 0) * 1%); border-radius: inherit; background: linear-gradient(90deg, var(--ok), #e2c35c, var(--ember), var(--red)); background-size: 400% 100%; background-position: calc(var(--m, 0) * 1%) 0; transition: width 0.6s cubic-bezier(0.2, 0.9, 0.2, 1), background-position 0.6s; }
+.meter-t { display: flex; justify-content: space-between; margin-top: 0.4rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); gap: 1rem; }
+.meter-t b { color: var(--ink); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 0.9rem; }
+.part { min-width: 0; padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 12px; background: #0d0708; transition: border-color 0.3s, transform 0.25s; }
+.part:hover { border-color: rgba(255, 45, 61, 0.5); }
+.part.pop { animation: pop 0.5s cubic-bezier(0.2, 0.9, 0.2, 1); }
+.part b { display: block; margin: 0.55rem 0 0.2rem; font-size: 1.02rem; line-height: 1.25; }
+.part code { display: block; font-family: var(--mono); font-size: 0.74rem; color: var(--ember); overflow-wrap: anywhere; }
+.part p { margin: 0.5rem 0 0; color: var(--mute); font-size: 0.87rem; line-height: 1.55; }
+.tabs { display: inline-flex; gap: 0.3rem; padding: 0.3rem; border: 1px solid var(--line); border-radius: 999px; margin: 1rem 0 1.2rem; background: #0d0708; flex-wrap: wrap; }
+.tabs button { font: 600 0.78rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); background: none; border: 0; padding: 0.55rem 1rem; border-radius: 999px; cursor: pointer; transition: background 0.3s, color 0.3s; }
+.tabs button[aria-selected="true"] { background: linear-gradient(100deg, var(--red), var(--crimson)); color: #fff; box-shadow: 0 6px 20px rgba(255, 45, 61, 0.3); }
+.tabp { animation: tabIn 0.5s cubic-bezier(0.2, 0.9, 0.2, 1); }
+@keyframes tabIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.gsteps { margin: 0; padding-left: 1.3rem; display: grid; gap: 1.1rem; color: var(--mute); font-size: 0.95rem; line-height: 1.6; }
+.gsteps li, .tabp { min-width: 0; }
+.gsteps b { color: var(--ink); }
+.gsteps code { font-family: var(--mono); font-size: 0.8rem; color: var(--ember); overflow-wrap: anywhere; }
+pre.code { margin: 0.5rem 0; padding: 0.9rem 1rem; border-radius: 10px; background: #050304; border: 1px solid var(--line); font-family: var(--mono); font-size: 0.78rem; line-height: 1.6; color: #ffe9e5; overflow-x: auto; max-width: 100%; }
+.uv-fillbar { position: absolute; left: 0; top: 50%; height: 10px; margin-top: -5px; width: calc(var(--p, 0) * 1%); border-radius: 999px; background: rgba(255, 255, 255, 0.25); pointer-events: none; }
+.uv-track.idle #uvr::-webkit-slider-thumb { animation: thumbPulse 1.8s ease-in-out infinite; }
+.uv-track.idle #uvr::-moz-range-thumb { animation: thumbPulse 1.8s ease-in-out infinite; }
+.disc { margin-top: 1.4rem; max-width: 46em; color: var(--mute); font-size: 0.8rem; }
+.big { font-family: var(--tp); font-weight: 700; font-size: clamp(5rem, 27vw, 19rem); line-height: 0.95; letter-spacing: -0.045em; }
+.thesis { font-family: var(--sf); font-weight: 800; font-size: clamp(1.7rem, 4.6vw, 3.1rem); line-height: 1.08; letter-spacing: -0.03em; max-width: 19em; }
+.lede { font-weight: 500; color: #d6c3bf; font-size: 1.12rem; }
+@media (max-width: 780px) { .cfg { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .idle input::-webkit-slider-thumb, .idle input::-moz-range-thumb, .uv-track.idle #uvr::-webkit-slider-thumb { animation: none; } .tabp { animation: none; } }
+</style>
+
+
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+
+<div class="intro" id="intro">
+  <button class="skip" type="button" data-skip>Skip intro</button>
+  <div class="rig">
+    <div class="tilt" id="tilt">
+      <div class="lap">
+        <div class="base">
+          <div class="bump"></div>
+          <div class="hinge l"></div><div class="hinge r"></div>
+          <div class="pwr"><u></u></div>
+          <div class="deck">
+            <div class="well"></div>
+            <div class="kb" id="kb"></div>
+            <div class="nub"></div>
+          </div>
+          <div class="tpb"><i></i><i></i><i></i></div>
+          <div class="tp"></div>
+          <div class="fp"></div>
+          <div class="stk"><b>intel</b><span>CORE i7</span></div>
+          <div class="edge"></div>
+        </div>
+        <div class="lid">
+          <div class="face cover"><span class="mark">ThinkPad</span></div>
+          <div class="face scr">
+            <div class="shut"></div><div class="cam"></div>
+            <div class="bz">ThinkPad</div>
+            <div class="panel">
+              <div class="splash">
+                <div class="wm">ThinkPad</div>
+                <small>To interrupt normal startup, press Enter.</small>
+                <em>Lenovo</em>
+              </div>
+              <div class="menu">
+                <div class="mh">Startup Interrupt Menu</div>
+                <div><kbd>Esc</kbd> Resume normal startup</div>
+                <div><kbd>F1</kbd> Enter ThinkPad Setup</div>
+                <div><kbd>F10</kbd> Run diagnostics</div>
+                <div><kbd>F12</kbd> Change boot device</div>
+              </div>
+              <div class="logo-end"><b>T480</b><span>FOR THINKPAD USERS</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="prog"><i></i></div>
+  <div class="cap"><span>Lid open</span><span>Startup interrupt menu</span><span>Waking the page</span></div>
+</div>
+
+<nav class="dock" id="dock" aria-label="Sections">
+  <div class="dock-in" id="dockin">
+    <span class="pill" id="pill"></span>
+    <a href="#vault">Variants</a>
+    <a href="#hidden">Perks</a>
+    <a href="#coreboot">Coreboot</a>
+    <a href="#cooling">Cooling</a>
+    <a href="#undervolt">Undervolt</a>
+    <a href="#mods">Mods</a>
+    <a href="#wild">Wild</a>
+    <a href="#parts">Parts</a>
+    <a href="#linux">Linux</a>
+    <a href="#honest">Catch</a>
+    <a href="#power">Power</a>
+    <a href="#ledger">Versus</a>
+  </nav>
+
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="kicker rise" style="--i:0">
+      <span class="logo">ThinkPad</span>
+      <span>Machine types 20L5 / 20L6</span>
+      <span>Released January 2018</span>
+      <span>Still going in 2026</span>
+    </div>
+    <h1 class="big" aria-label="T480"><span style="--i:0" aria-hidden="true">T</span><span style="--i:1" aria-hidden="true">4</span><span style="--i:2" aria-hidden="true">8</span><span style="--i:3" aria-hidden="true">0</span></h1>
+    <p class="thesis rise" style="--i:4">The ThinkPad you can <u>rebuild from the bones up</u>, and eight years later people still do.</p>
+    <p class="lede rise" style="--i:5">Forget the keyboard, everyone knows. The T480 is a hobby. Graft on a seven-row keyboard, swap in a 4K panel, flash firmware you can read, undervolt it until it runs cool, then put Linux on it like it was born there. <b>Reliable today? Lenovo shipped BIOS 1.56 in October 2025, and modders were still taking BIOS requests in 2026.</b></p>
+
+    <aside class="reel rise" style="--i:6" aria-label="T480 highlights">
+      <div class="reel-h">Highlight reel</div>
+      <div class="reel-grid">
+        <div><b><i data-count="7">7</i><small>rows</small></b><span>the T25 keyboard transplant, and kits exist for it</span></div>
+        <div><b><i data-count="64">64</i><small>GB</small></b><span>two 32 GB sticks, reported working</span></div>
+        <div><b><i data-count="3900">3900</i><small>MHz</small></b><span>single-core with throttled and a -105 mV undervolt, up from 3500</span></div>
+        <div><b><i data-count="2025">2025</i><small>BIOS</small></b><span>1.56 shipped in October 2025</span></div>
+      </div>
+    </aside>
+
+    <nav class="jump rise" style="--i:7" aria-label="Jump to a section">
+      <a href="#vault">Every variant</a>
+      <a href="#hidden">Hidden perks</a>
+      <a href="#coreboot">Coreboot</a>
+      <a href="#cooling">Dual heatpipe</a>
+      <a href="#undervolt">Undervolt</a>
+      <a href="#mods">Mod wall</a>
+      <a href="#wild">The wild mods</a>
+      <a href="#parts">Parts bin</a>
+      <a href="#linux">Linux</a>
+      <a href="#honest">Problems and fixes</a>
+    </nav>
+    <span class="hand rise" style="--i:8">scroll down. the good stuff is in the margins ↓</span>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <ul><li>7-row keyboard swap</li><li>64 GB RAM</li><li>Undervolt -105 mV</li><li>Coreboot target</li><li>Libreboot</li><li>TrackPoint</li><li>WQHD 2560 x 1440</li><li>4K panel swaps</li><li>Dual heatpipe mod</li><li>NVMe in the WWAN slot</li><li>Wi-Fi 6E</li><li>Qubes</li><li>OpenCore Hackintosh</li><li>Thunderbolt 3</li></ul>
+    <ul><li>7-row keyboard swap</li><li>64 GB RAM</li><li>Undervolt -105 mV</li><li>Coreboot target</li><li>Libreboot</li><li>TrackPoint</li><li>WQHD 2560 x 1440</li><li>4K panel swaps</li><li>Dual heatpipe mod</li><li>NVMe in the WWAN slot</li><li>Wi-Fi 6E</li><li>Qubes</li><li>OpenCore Hackintosh</li><li>Thunderbolt 3</li></ul>
+  </div>
+</div>
+
+<main class="wrap">
+<section id="vault">
+  <p class="eyebrow reveal">Exhibit A · The spec vault</p>
+  <h2 data-io>Every T480 that <em>came out of the factory.</em></h2>
+  <p class="sub reveal">Compiled from reviews, retailer and memory-vendor listings, and forum posts. Regional SKUs differ.</p>
+
+  <div class="vault">
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Processors</div>
+      <h3>Four Kaby Lake Refresh chips</h3>
+      <p>All quad-core with Hyper-Threading, 14 nm, 15 W class. Every one of them can pair with the integrated graphics. Bars show base to turbo clock on one shared scale.</p>
+      <div class="rng">
+        <div class="rng-axis"><span style="left:-2.6rem;transform:none">GHz</span><span style="left:0%">1.5</span><span style="left:16.667%">2.0</span><span style="left:33.333%">2.5</span><span style="left:50%">3.0</span><span style="left:66.667%">3.5</span><span style="left:83.333%">4.0</span><span style="left:100%">4.5</span></div>
+        <div class="rng-row"><b>i5-8250U</b><div class="rng-track"><i class="rng-bar" style="--l:3.333%;--w:60%;--dl:.05s"></i></div><span class="rng-v">1.6 to 3.4</span></div>
+        <div class="rng-row"><b>i5-8350U</b><div class="rng-track"><i class="rng-bar" style="--l:6.667%;--w:63.333%;--dl:.15s"></i></div><span class="rng-v">1.7 to 3.6</span></div>
+        <div class="rng-row"><b>i7-8550U</b><div class="rng-track"><i class="rng-bar" style="--l:10%;--w:73.333%;--dl:.25s"></i></div><span class="rng-v">1.8 to 4.0</span></div>
+        <div class="rng-row"><b>i7-8650U</b><div class="rng-track"><i class="rng-bar" style="--l:13.333%;--w:76.667%;--dl:.35s"></i></div><span class="rng-v">1.9 to 4.2</span></div>
+      </div>
+      <div class="scroll"><table class="vt">
+        <thead><tr><th>Chip</th><th>Cores / threads</th><th>Base to turbo</th><th>Seen in</th></tr></thead>
+        <tbody>
+          <tr><td>Core i5-8250U</td><td>4 / 8</td><td>1.6 to 3.4 GHz</td><td>Laptop Mag review unit, 20L50000SP</td></tr>
+          <tr><td>Core i5-8350U</td><td>4 / 8</td><td>1.7 to 3.6 GHz</td><td>20L50011US, the modding guide</td></tr>
+          <tr><td>Core i7-8550U</td><td>4 / 8</td><td>1.8 to 4.0 GHz</td><td>20L6S01V00 with the MX150</td></tr>
+          <tr><td class="hl">Core i7-8650U</td><td>4 / 8</td><td>1.9 to 4.2 GHz</td><td>20L50010US, Techaeris, top option</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Graphics</div>
+      <h3>Integrated or an MX150</h3>
+      <p>Two choices, and the board is different depending on which you pick.</p>
+      <div class="scroll"><table class="vt">
+        <thead><tr><th>GPU</th><th>What it is</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Intel UHD 620</td><td>Integrated, GT2, 24 EUs, about 300 to 1,100 MHz</td><td>On every CPU. Boards without a dGPU leave room for an extra x2 expansion slot.</td></tr>
+          <tr><td class="hl">GeForce MX150</td><td>Pascal GP108, 384 shaders, usually 2 GB GDDR5 on 64 bits</td><td>Optional. Reviews pair it with machine type 20L6, though one Notebookcheck listing disagrees.</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:0.9rem">Want more graphics? The Thunderbolt 3 port takes an eGPU box. The link is effectively a PCIe x4 pipe, so you give up some speed against a desktop.</p>
+    </article>
+
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Screens</div>
+      <h3>14 inches, five ways</h3>
+      <p>Lenovo's own pages are gone, so this comes from review panels and retailer comparison tables. The outlines below are drawn to scale, pixel for pixel.</p>
+      <svg class="res" viewBox="0 0 256 150" role="img" aria-label="Three nested rectangles to scale: 1366 by 768, 1920 by 1080 and 2560 by 1440 pixels.">
+        <rect pathLength="1" style="--dl:.7s" stroke="#ff2d3d" x="0.6" y="0.6" width="254.8" height="142.8" rx="2"/>
+        <rect pathLength="1" style="--dl:.35s" stroke="#ff9a5c" x="0.6" y="0.6" width="190.8" height="106.8" rx="2"/>
+        <rect pathLength="1" style="--dl:0s" stroke="#b39a97" x="0.6" y="0.6" width="135.4" height="75.6" rx="2"/>
+        <text x="5" y="71">HD 1366 x 768</text>
+        <text x="5" y="102" fill="#ff9a5c" style="fill:#ff9a5c">FHD 1920 x 1080</text>
+        <text x="5" y="138" style="fill:#ff6a6f">WQHD 2560 x 1440</text>
+      </svg>
+      <ul class="ul">
+        <li><b>HD 1366 x 768 TN.</b> The entry panel. A touch version is also listed.</li>
+        <li><b>FHD 1920 x 1080 IPS, no touch.</b> The one most users have.</li>
+        <li><b>FHD 1920 x 1080 with embedded touch.</b> Notebookcheck's 20L50010US had an AUO B140HAK01.0 panel.</li>
+        <li><b>WQHD 2560 x 1440 IPS, no touch.</b> The best screen you can order, with no HDR (the T490 gets HDR and up to 500 nits).</li>
+        <li><b>Flicker watch.</b> Notebookcheck published a warning about specific T480 SKUs for flicker-sensitive buyers. Check the panel part number.</li>
+      </ul>
+    </article>
+
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Memory and storage</div>
+      <h3>Slots you can actually use</h3>
+      <ul class="ul">
+        <li><b>RAM:</b> two DDR4-2400 SO-DIMM slots, 8 GB typical at launch.</li>
+        <li><b>Official max:</b> 32 GB, according to Crucial's compatibility page.</li>
+        <li><b>User max:</b> 64 GB. A forum poster has run 2 x 32 GB for months without trouble.</li>
+        <li><b>Storage:</b> M.2 NVMe, officially up to 1 TB.</li>
+        <li><b>Second drive:</b> the WWAN slot takes a 2242 NVMe with a mod. A Linux user's TLP dump shows two NVMe drives in one T480.</li>
+      </ul>
+    </article>
+
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Battery and power</div>
+      <h3>24, 48 or 96 Wh</h3>
+      <div class="scroll"><table class="vt">
+        <thead><tr><th>Setup</th><th>Total</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Internal only</td><td>24 Wh</td><td>3-cell, always there</td></tr>
+          <tr><td>Internal + 24 Wh rear</td><td>48 Wh</td><td>About 9 h in the Windows Central test</td></tr>
+          <tr><td class="hl">Internal + 72 Wh rear</td><td>96 Wh</td><td>The brick, and it sticks out</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:0.9rem">Charging is USB-C, a 65 W / 20 V / 3.25 A adapter. Weight starts at 3.6 lb (1.63 kg) and the body measures 336.6 x 232.5 x 19.95 mm.</p>
+    </article>
+
+    <article class="vcard reveal spot" data-io>
+      <div class="tag">Ports and security</div>
+      <h3>The full I/O list</h3>
+      <ul class="ul">
+        <li>Two USB-A 3.1 Gen1, plus a USB-C that handles charging and data.</li>
+        <li>A second USB-C that is Thunderbolt 3. It also carries docking.</li>
+        <li>HDMI, Gigabit Ethernet, a headphone/mic combo, and an SD card reader.</li>
+        <li>Optional SmartCard reader and NFC. A fingerprint reader and TPM 2.0 on board.</li>
+        <li>Kensington lock slot and the ThinkShutter webcam cover.</li>
+      </ul>
+    </article>
+
+    <article class="vcard full reveal spot" data-io>
+      <div class="tag">Model numbers</div>
+      <h3>Configurations I could pin down</h3>
+      <p>Two machine types exist: 20L5 and 20L6. Weights and prices are what the listing gave.</p>
+      <div class="scroll"><table class="vt wide">
+        <thead><tr><th>Model</th><th>CPU</th><th>GPU</th><th>Screen</th><th>Weight</th><th>Price listed</th></tr></thead>
+        <tbody>
+          <tr><td>20L6S01V00</td><td>i7-8550U</td><td>MX150, 2 GB</td><td>14" FHD</td><td>1.776 kg</td><td>1,399 EUR (Campus Program)</td></tr>
+          <tr><td>20L50010US</td><td>i7-8650U</td><td>UHD 620</td><td>14" FHD, touch</td><td>1.63 kg</td><td>not listed</td></tr>
+          <tr><td>20L50011US</td><td>i5-8350U</td><td>UHD 620</td><td>14" FHD</td><td>1.78 kg</td><td>about 1,300 EUR</td></tr>
+          <tr><td>20L50000SP</td><td>i5-8250U</td><td>UHD 620</td><td>14" FHD</td><td>1.65 kg</td><td>not listed</td></tr>
+        </tbody>
+      </table></div>
+      <div class="chips" aria-label="Other model numbers seen in the wild">
+        <span>20L5S00F00</span><span>20L6S1LV2F</span><span>20L5000AMC</span><span>20L5000BMH</span><span>20L50007GE</span>
+      </div>
+      <p class="note" style="margin-top:0.8rem">The chips above turned up in forum logs, manuals and a Notebookcheck table. Their CPU fields don't line up with Intel's naming, so I left their specs out rather than guess. The T480s is a different laptop (types 20L7 and 20L8): thinner, one RAM slot with soldered memory, no rear battery.</p>
+    </article>
+  </div>
+</section>
+
+<section id="hidden">
+  <p class="eyebrow reveal">Exhibit B · What the spec sheet never brags about</p>
+  <h2 data-io>Things ThinkPad users find <em>after</em> they buy it.</h2>
+  <p class="sub reveal">Collected from ThinkPad user forums and long reviews. Not from the marketing page.</p>
+
+  <div class="cards">
+    <article class="card reveal spot">
+      <div class="tag">Battery care</div>
+      <h3>Separate charge limits for each battery</h3>
+      <p>On Linux, TLP can set start and stop charge thresholds for the main battery and the secondary one independently. Cap them at 80% if the laptop lives on a desk and the cells stay young.</p>
+      <span class="hand">future you says thanks</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Memory</div>
+      <h3>Two real SO-DIMM slots</h3>
+      <p>No soldered-RAM lottery on the standard T480. Its smaller sibling, the T480s, has one slot and a soldered chunk. Spec pages stop at 32 GB, but a forum poster reported 2 x 32 GB for months without trouble.</p>
+      <span class="hand">64 GB in a 14-inch. in 2018 hardware.</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Storage</div>
+      <h3>A second NVMe in the WWAN slot</h3>
+      <p>The community modding guide counts the spare slot among the reasons the machine is still worth saving. It wants a 2242 drive with an M+B key, and the guide names the WD SN520 and KingSpec drives as bootable. An adapter lets a 2230 drive fit.</p>
+      <span class="hand">check the slot size first (2242!)</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Ports</div>
+      <h3>Two different USB-C ports</h3>
+      <p>One is the charging port. The other is Thunderbolt 3 and also serves as the docking connection. Plug in a dock and the display, network and peripherals ride one cable.</p>
+      <span class="hand">no proprietary slab dock needed</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Office-grade paranoia</div>
+      <h3>NFC, SmartCard reader and a camera shutter</h3>
+      <p>Notebookcheck's review lists NFC, an optional SmartCard reader and TPM 2.0 on top of the fingerprint reader. eWeek points out the little sliding shutter over the webcam. Your sticky note is retired.</p>
+      <span class="hand">the shutter is the best feature nobody posts about</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Build</div>
+      <h3>Tested against 12 military-grade checks and 200 in-house ones</h3>
+      <p>Techaeris repeats Lenovo's durability claim. Neowin's reviewer adds that the screen is not likely to crack in a drop. Reviewers keep praising the hinges. It's a tool you throw in a bag, not a trophy.</p>
+      <span class="hand">mine has dents. it has opinions about those.</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Paranoid security</div>
+      <h3>The Qubes OS crowd adopted it</h3>
+      <p>The Qubes forum has a long-running T480 thread and a newbie guide to flashing Heads on a T480s. If you want a laptop you can lock down to the firmware, this one has company.</p>
+      <span class="hand">see the coreboot section below</span>
+    </article>
+    <article class="card reveal spot">
+      <div class="tag">Docking</div>
+      <h3>Side docking over Thunderbolt 3</h3>
+      <p>Neowin notes the Thunderbolt 3 port supports side docking, and Lenovo's docks connect a pile of displays and peripherals through it. The T480s gets a mechanical dock connector instead, so don't mix up the two.</p>
+    </article>
+    <article class="card wide reveal spot">
+      <div>
+        <div class="tag">Linux</div>
+        <h3>The Arch wiki has a page for it</h3>
+        <p>When a laptop has its own entry on the Arch wiki, a throttling workaround that spawned a whole GitHub project and three package-manager recipes, you are looking at a machine thousands of people have already debugged for you.</p>
+      </div>
+      <div class="code" aria-label="Example install on Arch">
+        <span># arch</span><br>
+        sudo pacman -S throttled<br>
+        sudo systemctl enable --now throttled.service<br>
+        <span># done. that's the whole ritual</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="coreboot">
+  <p class="eyebrow reveal">Exhibit C · Coreboot</p>
+  <h2 data-io>Run it on <em>firmware you can read.</em></h2>
+  <p class="sub reveal">The T480 is a supported target for both coreboot and Libreboot, which builds on coreboot. It is also one of the more popular ways to get a modern-ish ThinkPad without the vendor firmware blob soup. It is not a weekend toy: the first flash needs a clip on the chip.</p>
+
+  <div class="core">
+    <div>
+      <div class="term reveal" id="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>coreboot status, T480</span></div>
+        <div class="term-body" id="termbody">
+          <div class="ln c"># what works</div>
+          <div class="ln row"><b class="okk">OK</b>Intel graphics (libgfxinit), internal display, miniDP out</div>
+          <div class="ln row"><b class="okk">OK</b>keyboard, TrackPoint, ACPI</div>
+          <div class="ln row"><b class="okk">OK</b>SATA, M.2 SATA, NVMe</div>
+          <div class="ln row"><b class="okk">OK</b>USB, Ethernet, WLAN, WWAN, Bluetooth</div>
+          <div class="ln row"><b class="okk">OK</b>VT-x and VT-d</div>
+          <div class="ln row"><b class="okk">OK</b>NVMe in the WWAN slot (Libreboot)</div>
+          <div class="ln">&nbsp;</div>
+          <div class="ln c"># what doesn't, or isn't there yet</div>
+          <div class="ln row"><b class="bad">NO</b>Thunderbolt 3 controller (Alpine Ridge)</div>
+          <div class="ln row"><b class="bad">NO</b>lower-right USB-C: charging and DisplayPort only</div>
+          <div class="ln row"><b class="bad">NO</b>reliable NVIDIA MX150 (option ROM, buggy power-up)</div>
+          <div class="ln row"><b class="bad">!!</b>some Fn+F keys, headphone jack detection</div>
+          <div class="ln row"><b class="bad">??</b>NFC and SmartCard reader, untested</div>
+          <div class="ln c cursor" id="termend">&nbsp;</div>
+        </div>
+      </div>
+      <div class="flash reveal" id="flash">
+        <div class="flash-h"><span id="flashlbl">16 MiB chip · idle</span><button class="btn ghost" type="button" id="flashbtn">Play the flash</button></div>
+        <div class="blocks" id="blocks" aria-hidden="true"></div>
+        <small>One block per MiB of the W25Q128. An illustration of erase, write, verify, not a real flash.</small>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <ol class="steps recipe">
+        <li><b>Update the stock firmware first.</b> Older Thunderbolt 3 firmware writes logs to its own 4 MB flash chip. When that fills up, the laptop stops booting. Lenovo's update fixes it, and Libreboot and coreboot both say to do this before anything else.</li>
+        <li><b>Power down properly.</b> Remove the back cover and unplug the internal battery connector and the CMOS battery. The external battery comes off too.</li>
+        <li><b>Clip onto the chip and dump it.</b> The system flash is a 16 MiB SOIC-8 chip. Read it with an external programmer such as a CH341A or a Raspberry Pi. Libreboot wants a dump before the Lenovo update and another before you flash, both verified.</li>
+        <li><b>Deal with Boot Guard and the Intel ME.</b> Boot Guard blocks firmware Lenovo didn't sign, so a "deguard" tool bypasses it. A donor ME image comes from a Dell updater, and Libreboot then disables the ME with me_cleaner.</li>
+        <li><b>First flash is external. Updates can be internal.</b> After the initial clip-on flash, coreboot's docs say later updates can go in through software, writing only the BIOS region.</li>
+      </ol>
+      <div class="warn"><b>Brick warning</b>Libreboot's own page says leaving out the ME and FSP blobs in a release ROM can brick the machine. The Thunderbolt flash is a separate, smaller chip, and flashprog will report a size mismatch if you clip the wrong one.</div>
+    </div>
+  </div>
+  <p class="note reveal">Small print ThinkPad users care about: Hyper-Threading is off by default in Libreboot, and there is a reversible option to turn it on. The MAC address is identical across release ROMs until you change it with nvmutil (pass <code>--platform sklkbl</code> to ifdtool if you do). EC UART debugging works on the T480 only, not the T480s, and needs the 1.22 vendor EC firmware (N24HT37W), so you downgrade to a vendor BIOS between 1.39 and 1.54 first. Libreboot also notes Thunderbolt broke S3 resume for some people, and a second NVMe works with coreboot only on boards without the discrete GPU.</p>
+</section>
+
+<section id="cooling">
+  <p class="eyebrow reveal">Exhibit D · The dual heatpipe mod</p>
+  <h2 data-io>Swap in the <em>big heatsink.</em> Stop throttling.</h2>
+  <p class="sub reveal">Integrated-graphics T480s ship with a small single-pipe heatsink, and plenty of users watch them hit the thermal wall. The fix that keeps coming up is the heavier dual-pipe sink from the dGPU boards.</p>
+
+  <div class="cool">
+    <div class="heat reveal">
+      <div class="seg" role="group" aria-label="Heatsink type">
+        <button type="button" id="hs1" aria-pressed="true">Stock: 1 heatpipe</button>
+        <button type="button" id="hs2" aria-pressed="false">Mod: 2 heatpipes</button>
+      </div>
+      <svg viewBox="0 0 480 220" role="img" aria-label="Schematic of heat flowing from the CPU through one or two heatpipes to the fin stack and fan.">
+        <defs>
+          <radialGradient id="hg"><stop offset="0" stop-color="#ff4a55" stop-opacity=".9"/><stop offset="1" stop-color="#ff4a55" stop-opacity="0"/></radialGradient>
+          <pattern id="fins" width="6" height="10" patternUnits="userSpaceOnUse"><rect width="2.4" height="10" fill="#3a2024"/></pattern>
+        </defs>
+        <rect x="40" y="70" width="100" height="80" rx="8" fill="#1a1a1e" stroke="#2d2d32"/>
+        <g class="pipe2" id="gpuPad"><rect x="40" y="152" width="100" height="44" rx="8" fill="none" stroke="#b39a97" stroke-opacity=".6" stroke-dasharray="4 4"/><text x="90" y="178" text-anchor="middle" font-size="9" fill="#b39a97" font-family="monospace">dGPU area, masked</text></g>
+        <circle class="hot" id="hotspot" cx="87" cy="110" r="46" fill="url(#hg)"/>
+        <rect x="70" y="96" width="34" height="28" rx="4" fill="#ff9a5c"/>
+        <text x="87" y="88" text-anchor="middle" font-size="9" fill="#b39a97" font-family="monospace">CPU die</text>
+        <path class="pipe" d="M105 104 C190 104 270 92 352 92"/>
+        <path class="pipe-flow" d="M105 104 C190 104 270 92 352 92"/>
+        <g class="pipe2" id="pipeB"><path class="pipe" d="M105 118 C190 118 270 130 352 130"/><path class="pipe-flow" d="M105 118 C190 118 270 130 352 130"/></g>
+        <rect x="350" y="62" width="96" height="96" rx="6" fill="url(#fins)" stroke="#2d2d32"/>
+        <g class="fan"><circle cx="392" cy="110" r="30" fill="#0c0c0e" stroke="#2d2d32"/><path d="M392 110 L392 82 A28 28 0 0 1 416 96 Z M392 110 L420 110 A28 28 0 0 1 406 134 Z M392 110 L392 138 A28 28 0 0 1 368 124 Z M392 110 L364 110 A28 28 0 0 1 378 86 Z" fill="#ff2d3d" fill-opacity=".75"/></g>
+        <text x="398" y="178" text-anchor="middle" font-size="9" fill="#b39a97" font-family="monospace">fins + fan</text>
+      </svg>
+      <div class="heat-read" aria-live="polite">
+        <div><span id="hlab">Single pipe, 69 g</span><b id="hbig">96 °C</b></div>
+        <div id="hsub" style="max-width:20em">Reached almost immediately with regular paste, then the CPU throttled.</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <ol class="steps">
+        <li><b>Find the dual-pipe part.</b> The Habr author bought a 93 g sink with two heatpipes and a dGPU area from AliExpress for $26.</li>
+        <li><b>Mask the dGPU area.</b> There's nothing under it on an integrated board, but he covered the soldered area with Kapton tape. The modding guide says to cover it too, so nothing shorts.</li>
+        <li><b>Re-paste with care.</b> Fresh MX4 on the small sink helped without stopping the throttling. The big sink with plain paste stopped it. A PTM7950 pad took off a couple more degrees: $8 for a 40 x 80 mm sheet, when the die is about 10 x 19 mm.</li>
+        <li><b>Skip liquid metal.</b> He tested it and advised against it in a laptop because of the damage risk.</li>
+      </ol>
+      <p class="hand fine">check what the stock paste job touched. the teardown found paste on the PCH chip, which doesn't need cooling.</p>
+    </div>
+  </div>
+
+  <div class="bars" data-io>
+    <div class="bar">
+      <div class="bar-h"><b>Stock single-pipe heatsink</b><span>69 g</span></div>
+      <div class="track"><div class="fill a" style="--w:74.2%">1 copper pipe</div></div>
+      <div class="bar-n">An i5-8350U hit about 96 °C almost immediately and throttled. A friend's identical laptop did the same.</div>
+    </div>
+    <div class="bar">
+      <div class="bar-h"><b>Dual-pipe heatsink with the GPU area</b><span>93 g</span></div>
+      <div class="track"><div class="fill b" style="--w:100%">2 copper pipes</div></div>
+      <div class="bar-n">Throttling disappeared completely, even with regular paste.</div>
+    </div>
+  </div>
+  <p class="note reveal">Bar length is heatsink mass, from the Habr teardown, which measured a couple of degrees of gain. The modding guide goes bigger, claiming 15 to 35 °C lower under sustained turbo.</p>
+</section>
+
+<section id="undervolt">
+  <p class="eyebrow reveal">Exhibit E · Undervolt lab</p>
+  <h2 data-io>Lower the voltage. <em>Keep the speed.</em></h2>
+  <p class="sub reveal">Undervolting feeds the CPU less voltage for the same clocks. Less heat, so less throttling. Every chip tolerates a different amount, so the numbers below are what specific people reported stable on specific machines, not a recipe. Drag the slider to see which reports sit near a value.</p>
+
+  <div class="uv reveal" data-io>
+    <div class="uv-head"><span>Core + cache offset</span><b id="uvv">−0 mV</b></div>
+    <div class="uv-track">
+      <input id="uvr" type="range" min="0" max="170" step="5" value="0" aria-label="Core and cache undervolt offset in millivolts">
+      <div class="uv-zones" aria-hidden="true"><i class="z1"></i><i class="z2"></i><i class="z3"></i><i class="z4"></i><i class="z5"></i></div>
+      <div class="uv-marks" id="uvm" aria-hidden="true"></div>
+    </div>
+    <div class="uv-scale" aria-hidden="true"><span style="left:0;transform:none">0</span><span style="left:35.3%">−60</span><span style="left:58.8%">−100</span><span style="left:73.5%">−125</span><span style="left:94.1%">−160</span></div>
+    <p class="uv-zone" id="uvz" aria-live="polite"></p>
+    <p class="uv-rep" id="uvp"></p>
+    <p class="uv-foot">The zones come from the reports in the table below. They are not a prediction for your chip. The only test is a stress run on yours.</p>
+  </div>
+
+  <div class="uv-gains" data-io>
+    <div><b>−15 °C</b><span>average core temperature, T480s i5-8250U at −125 mV (Notebookcheck)</span></div>
+    <div><b>−7.5 W</b><span>power draw, same test, and the fans never reached their top level</span></div>
+    <div><b>+8 %</b><span>sustained Cinebench clock, X1 Carbon 6 i7-8550U at −110 mV</span></div>
+    <div><b>+400 MHz</b><span>single-core, T480s i7-8550U with throttled and −105 mV (about 3.5 → 3.9 GHz)</span></div>
+  </div>
+
+  <div class="uv-table reveal" role="table" aria-label="Reported undervolt values">
+    <div class="uv-row hd" role="row"><span>Source</span><span>Chip · tool</span><span>Values (mV)</span><span>What they reported</span></div>
+    <div class="uv-row" role="row"><span>Notebookcheck<br><em>T480s</em></span><span>i5-8250U · Intel XTU</span><span><b>Core −125</b></span><span>Held the full 3.4 GHz through 20 Cinebench loops, about 15 °C cooler, 7.5 W less power.</span></div>
+    <div class="uv-row" role="row"><span>Notebookcheck<br><em>X1 Carbon 6, same CPU family</em></span><span>i7-8550U · Intel XTU</span><span><b>Core −110</b></span><span>Average clock 2.9 → almost 3.2 GHz (+8%), same temperature and power. With limits dropped to 22 W / 17.5 W: same clocks, about 12 °C cooler.</span></div>
+    <div class="uv-row" role="row"><span>dipch, GitHub<br><em>T480s</em></span><span>i7-8550U · throttled (Linux)</span><span><b>Core −105, cache −105</b><br>GPU −85, uncore −85, analog I/O 0</span><span>With PL1/PL2 set to 44 W on AC and 29 W on battery and the CPU's energy hint on performance: Geekbench 4 5391 / 17265 versus 4672 / 16129, about 3.9 GHz single-core in Prime95 versus 3.5.</span></div>
+    <div class="uv-row" role="row"><span>Niklas Zantner, dev.to<br><em>T480s, Arch Linux</em></span><span>i5-8250U · intel-undervolt</span><span><b>CPU −125, cache −100</b><br>GPU −80, system agent −80, analog I/O 0</span><span>Paired with powertop and frequency caps for a mostly silent laptop. He writes in capitals that you must not just copy his values.</span></div>
+    <div class="uv-row" role="row"><span>Tom's Guide poster<br><em>T480s</em></span><span>Intel XTU</span><span><b>Core −120</b>, iGPU −60</span><span>Idle temperature dropped from 40–45 °C to 30–35 °C. The offsets sometimes reverted after a reboot.</span></div>
+    <div class="uv-row" role="row"><span>RistrettoRambles<br><em>T480</em></span><span>i5-8250U · ThrottleStop</span><span><b>Core + cache −160</b><br>iGPU + unslice −55</span><span>Found over about a week of testing on AC and battery, with a Cinebench R20 loop and RealBench. The most aggressive number here, from one chip.</span></div>
+  </div>
+  <p class="sub reveal" style="margin-top:1rem">What the reports share: core and cache offsets between −100 and −125 mV turn up in several unrelated sources, GPU and uncore sit lower around −60 to −85, and analog I/O stays at 0.</p>
+
+  <div class="uv-how">
+    <div class="term reveal">
+      <div class="term-bar"><i></i><i></i><i></i><span>Linux: intel-undervolt</span></div>
+<div class="term-body"><span class="c"># /etc/intel-undervolt.conf</span>
+<span class="c"># reported-stable on one T480s. start at -60 on yours.</span>
+undervolt 0 'CPU' -105
+undervolt 1 'GPU' -80
+undervolt 2 'CPU Cache' -105
+undervolt 3 'System Agent' -80
+undervolt 4 'Analog I/O' 0
+
+<span class="p">$</span> <span class="w">sudo intel-undervolt apply</span>
+<span class="p">$</span> <span class="w">sudo systemctl enable --now intel-undervolt</span>
+
+<span class="c"># the python tool does the same job:</span>
+<span class="p">$</span> <span class="w">sudo undervolt --core -105 --cache -105 --gpu -80</span>
+<span class="p">$</span> <span class="w">sudo undervolt --read</span>
+</div>
+    </div>
+    <ol class="uv-steps reveal">
+      <li><b>Windows: ThrottleStop.</b> Open FIVR, tick Unlock Adjustable Voltage, and set the same negative offset for CPU Core and CPU Cache. Core alone had no effect for the TechPowerUp poster. Then the iGPU and unslice values, and apply.</li>
+      <li><b>Stress it.</b> Loop Cinebench R20, run RealBench or Prime95. The reports above used all three.</li>
+      <li><b>Step by 10 mV.</b> Go deeper until it crashes or throws errors, then back off 10–20 mV. A crash from too much undervolt is a hard freeze, so save your work first.</li>
+      <li><b>Make it stick.</b> Start ThrottleStop or intel-undervolt at boot. One poster's XTU offsets reverted after reboots.</li>
+    </ol>
+  </div>
+
+  <h3 class="fx-h reveal">Undervolt guide for Linux</h3>
+  <p class="sub reveal" style="margin-top:0">intel-undervolt works on Haswell and newer Intel CPUs, so the T480's 8th-gen chips are covered. Pick your family.</p>
+  <div class="tabs reveal" role="tablist" aria-label="Distro family">
+    <button type="button" role="tab" aria-selected="true" data-t="arch">Arch-based</button>
+    <button type="button" role="tab" aria-selected="false" data-t="deb">Ubuntu and Debian-based</button>
+  </div>
+
+  <div class="tabp" data-p="arch">
+    <ol class="gsteps">
+      <li><b>Install it.</b> It's in the official repos (Arch, EndeavourOS, Manjaro and friends).
+<pre class="code">sudo pacman -S intel-undervolt</pre></li>
+      <li><b>Check the kernel lets you.</b> With Secure Boot on, kernel lockdown blocks the register access. You want <code>[none]</code>. If you see <code>[integrity]</code>, turn Secure Boot off in the BIOS.
+<pre class="code">cat /sys/kernel/security/lockdown</pre></li>
+      <li><b>Look at the current values.</b>
+<pre class="code">sudo intel-undervolt read</pre></li>
+      <li><b>Write a gentle config.</b> Edit <code>/etc/intel-undervolt.conf</code>. Keep CPU and CPU Cache at the same value.
+<pre class="code">undervolt 0 'CPU' -60
+undervolt 1 'GPU' -40
+undervolt 2 'CPU Cache' -60
+undervolt 3 'System Agent' -40
+undervolt 4 'Analog I/O' 0</pre></li>
+      <li><b>Apply and confirm.</b>
+<pre class="code">sudo intel-undervolt apply
+sudo intel-undervolt read</pre></li>
+      <li><b>Stress it.</b> Run a load and watch the clocks. A bad undervolt shows up as a freeze or a reboot.
+<pre class="code">sudo pacman -S stress-ng
+stress-ng --cpu 0 --cpu-method matrixprod --timeout 15m
+watch -n1 "grep MHz /proc/cpuinfo"</pre></li>
+      <li><b>Step down by 10 mV.</b> Edit, apply, stress again. Stop 20 mV short of the first crash. The reports above cluster at −100 to −125 on core and cache.</li>
+      <li><b>Make it stick.</b>
+<pre class="code">sudo systemctl enable --now intel-undervolt</pre>
+If the values drop after suspend, add the daemon service too:
+<pre class="code">sudo systemctl enable --now intel-undervolt-loop</pre></li>
+    </ol>
+  </div>
+
+  <div class="tabp" data-p="deb" hidden>
+    <ol class="gsteps">
+      <li><b>Build it.</b> There's no apt package, so you compile it. It's small and quick.
+<pre class="code">sudo apt update
+sudo apt install build-essential git
+git clone https://github.com/kitsunyan/intel-undervolt.git
+cd intel-undervolt
+./configure --enable-systemd
+make
+sudo make install</pre></li>
+      <li><b>Check the kernel lets you.</b> With Secure Boot on, kernel lockdown blocks the register access. You want <code>[none]</code>. If you see <code>[integrity]</code>, turn Secure Boot off in the BIOS.
+<pre class="code">cat /sys/kernel/security/lockdown</pre></li>
+      <li><b>Look at the current values.</b>
+<pre class="code">sudo intel-undervolt read</pre></li>
+      <li><b>Write a gentle config.</b> Edit <code>/etc/intel-undervolt.conf</code> with <code>sudoedit</code>. Keep CPU and CPU Cache at the same value.
+<pre class="code">undervolt 0 'CPU' -60
+undervolt 1 'GPU' -40
+undervolt 2 'CPU Cache' -60
+undervolt 3 'System Agent' -40
+undervolt 4 'Analog I/O' 0</pre></li>
+      <li><b>Apply and confirm.</b>
+<pre class="code">sudo intel-undervolt apply
+sudo intel-undervolt read</pre></li>
+      <li><b>Stress it.</b>
+<pre class="code">sudo apt install stress-ng
+stress-ng --cpu 0 --cpu-method matrixprod --timeout 15m
+watch -n1 "grep MHz /proc/cpuinfo"</pre></li>
+      <li><b>Step down by 10 mV.</b> Edit, apply, stress again. Stop 20 mV short of the first crash. The reports above cluster at −100 to −125 on core and cache.</li>
+      <li><b>Make it stick.</b>
+<pre class="code">sudo systemctl enable --now intel-undervolt</pre>
+If the values drop after suspend, add the daemon service too:
+<pre class="code">sudo systemctl enable --now intel-undervolt-loop</pre></li>
+      <li><b>Prefer Python?</b> The <code>undervolt</code> tool takes flags instead of a config file. On Ubuntu 23.04 and Debian 12 and newer, pip refuses system-wide installs, so the source build above is the easy route.
+<pre class="code">sudo undervolt --core -60 --cache -60 --gpu -40
+sudo undervolt --read</pre></li>
+    </ol>
+  </div>
+
+  <div class="probs uv-gotchas">
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2 fopen">Check first</span></div>
+      <h3>The BIOS may have locked it</h3>
+      <dl>
+        <dt>What you see</dt><dd>You apply −50 mV and reading it back shows 0, or nothing changes.</dd>
+        <dt>Why</dt><dd>Plundervolt mitigations arrived in ThinkPad BIOS updates around late 2019 (an X280 thread cites version 1.30). T480 owners on BIOS 1.50 and 1.52 have asked modders for a BIOS that unhides the Advanced menu, which one said they needed for undervolting.</dd>
+        <dt class="f">What people tried</dt><dd>Downgrading (an X280 owner's flash failed with "secureflash authentication failed"), or a per-machine modded BIOS built from your own dump. Both carry risk. See the BIOS-mod card in the wild section.</dd>
+      </dl>
+      <p class="src">Sources: ThinkPads forum X280 thread · bios-mods.com T480 thread</p>
+    </article>
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Linux</span><span class="chip2 fsw">Software fix</span></div>
+      <h3>The tool does nothing on Linux</h3>
+      <dl>
+        <dt>What you see</dt><dd>intel-undervolt or throttled runs but offsets don't apply, or it errors on MSR access.</dd>
+        <dt>Why</dt><dd>With Secure Boot on, the kernel enables Lockdown, which blocks the register access these tools need. Thermald can also fight with them.</dd>
+        <dt class="f">The fix</dt><dd>Turn Secure Boot off (or disable the Lockdown LSM), and disable thermald or check that it isn't overriding your limits.</dd>
+      </dl>
+      <p class="src">Source: dipch's throttling-fix README</p>
+    </article>
+  </div>
+</section>
+
+<section id="mods">
+  <p class="eyebrow reveal">Exhibit F · The mod wall</p>
+  <h2 data-io>People <em>transplant organs</em> into this thing.</h2>
+  <p class="sub reveal">Everything below comes from the community modding guide and the threads around it. Difficulty notes are the guide author's, where he gave one.</p>
+
+  <div class="filters reveal" id="filters" role="group" aria-label="Filter mods">
+    <button type="button" data-f="all" aria-pressed="true">All<span></span></button>
+    <button type="button" data-f="mem" aria-pressed="false">Memory and storage<span></span></button>
+    <button type="button" data-f="cool" aria-pressed="false">Cooling<span></span></button>
+    <button type="button" data-f="input" aria-pressed="false">Input<span></span></button>
+    <button type="button" data-f="display" aria-pressed="false">Display<span></span></button>
+    <button type="button" data-f="fw" aria-pressed="false">Firmware<span></span></button>
+    <button type="button" data-f="power" aria-pressed="false">Power<span></span></button>
+    <button type="button" data-f="misc" aria-pressed="false">Other<span></span></button>
+  </div>
+
+  <div class="mods" id="mods-grid">
+    <div class="mod spot" data-cat="mem">
+      <div class="from"><span>RAM</span><em>easy, per the guide <span class="meter" aria-hidden="true"><i class="f"></i><i></i><i></i><i></i></span></em></div>
+      <h3>Up to 2 x 32 GB</h3>
+      <p>Two screws and the bottom cover. The guide author runs 32 GB. A reply confirms a pair of 32 GB sticks works.</p>
+    </div>
+    <div class="mod spot" data-cat="mem">
+      <div class="from"><span>Storage</span></div>
+      <h3>NVMe in the WWAN slot</h3>
+      <p>2242 M+B drives: WD SN520 (PCIe 3.0 x2) and KingSpec both boot. A 2230 drive needs an adapter.</p>
+    </div>
+    <div class="mod spot" data-cat="cool">
+      <div class="from"><span>Cooling</span><em><a href="#cooling">see exhibit E</a></em></div>
+      <h3>Dual-pipe heatsink and PTM7950</h3>
+      <p>The big sink from the dGPU boards, with Kapton over the unused GPU area and a phase-change pad on the CPU.</p>
+    </div>
+    <div class="mod spot" data-cat="cool">
+      <div class="from"><span>Cooling</span></div>
+      <h3>Undervolt, keep the turbo</h3>
+      <p>ThrottleStop on Windows, throttled on Linux. The guide author used BIOS 1.25 because newer versions don't allow undervolting.</p>
+    </div>
+    <div class="mod spot" data-cat="misc">
+      <div class="from"><span>Wi-Fi</span></div>
+      <h3>Intel AX210</h3>
+      <p>Wi-Fi 6E and Bluetooth 5.3 in place of the stock card. A BE200 may work through an adapter, but nobody has confirmed it.</p>
+    </div>
+    <div class="mod spot" data-cat="input">
+      <div class="from"><span>Trackpad</span></div>
+      <h3>Glass pad from an X1 Extreme</h3>
+      <p>The author rates the stock pad poorly. The X1E pad drops in. Windows needs X1E drivers, and Linux works out of the box.</p>
+    </div>
+    <div class="mod spot" data-cat="input">
+      <div class="from"><span>Keyboard</span></div>
+      <h3>Backlight colour sheet</h3>
+      <p>A backlit keyboard plus a coloured plastic sheet under the keys changes the glow, and the colour can be swapped later.</p>
+    </div>
+    <div class="mod spot" data-cat="input">
+      <div class="from"><span>Keyboard</span><em>not advised</em></div>
+      <h3>The ThinkPad 25 seven-row</h3>
+      <p>People call a T480 with T25 parts a "frankenpad". It takes the T25 palmrest, modifications and 3D-printed parts. The guide author advises against it.</p>
+    </div>
+    <div class="mod spot" data-cat="display">
+      <div class="from"><span>Display</span></div>
+      <h3>BOE0791 IPS, even 4K</h3>
+      <p>A BOE0791 IPS panel is the guide's pick. A 4K 60 Hz panel also fits, and the author calls it overkill. An OLED swap needs a 40-pin eDP connector and display assembly changes, and costs too much.</p>
+    </div>
+    <div class="mod spot" data-cat="fw">
+      <div class="from"><span>BIOS</span><em>hard, brick risk <span class="meter" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></em></div>
+      <h3>Whitelist removal and unlocks</h3>
+      <p>An external CH341A flash with community patches removes the WWAN whitelist, unlocks the advanced menu and enables overclocking. Newer BIOS versions close the undervolting door, so the author stayed on 1.25.</p>
+    </div>
+    <div class="mod spot" data-cat="power">
+      <div class="from"><span>Battery</span></div>
+      <h3>Mix and match packs</h3>
+      <p>The guide author runs 24 Wh inside with a 44 Wh rear pack. Original packs are discontinued, but some sellers still ship working replacements.</p>
+    </div>
+    <div class="mod spot" data-cat="misc">
+      <div class="from"><span>Lid</span></div>
+      <h3>The magnesium lid</h3>
+      <p>Some units have one. The author says it barely changes anything and adds weight.</p>
+    </div>
+    <div class="mod spot" data-cat="misc">
+      <div class="from"><span>Speakers</span><em>not recommended</em></div>
+      <h3>iPad Pro drivers</h3>
+      <p>Tedious, and it may need first-gen iPad Pro speakers plus palmrest changes. The author suggests external audio instead.</p>
+    </div>
+    <div class="mod spot" data-cat="misc">
+      <div class="from"><span>Graphics</span></div>
+      <h3>eGPU over Thunderbolt 3</h3>
+      <p>A reader asked the guide author to add it. The Thunderbolt link gives a PCIe x4 pipe, so you pay a speed penalty against a desktop slot.</p>
+    </div>
+  </div>
+</section>
+
+<section id="wild">
+  <p class="eyebrow reveal">Exhibit G · The unhinged ones</p>
+  <h2 data-io>Then there are the people who <em>take it apart.</em></h2>
+  <p class="sub reveal">A ThinkPad user doesn't ask whether they can. They ask which screws. A tour of the strangest things documented for the T480 and its relatives.</p>
+
+  <div class="wild">
+    <article class="wcard reveal spot" data-io>
+      <h3>The FrankenPad</h3>
+      <p>One builder put a quad-core T480 board into a T25's seven-row-keyboard body, with a magnesium lid, ThinkShutter bezel and a UHD panel. The T25 top case was cut and rebuilt with a custom 3D-printed mount, the hinge bracket trimmed, and the UHD panel fixed in with custom brackets. The finished machine weighed about 1.56 kg.</p>
+      <span class="stat">T480 board · T25 body · UHD panel</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>A seven-row keyboard in a T480</h3>
+      <p>The T25 keyboard transplant into a T480 chassis is the awesome-thinkpad-mods list's headline FrankenPad. Forum builders show T480s with T25 keyboards, and the list links a kit or full build from xyte.ch and a version with a 16:10 FHD screen.</p>
+      <span class="stat">Keyboard transplant · kits exist</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>64 GB of RAM</h3>
+      <p>Officially it takes less. Forum users report two 32 GB sticks working, and the mods list tracks a T480 running 64 GB.</p>
+      <span class="stat">2 x 32 GB SO-DIMM</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>QHD and 4K screens</h3>
+      <p>People have swapped the stock FHD panel for WQHD and for 4K in both the T480 and T480s. It works because the display connector has four lanes, and the FrankenPad builder got a UHD panel at 100% sRGB and about 400 nits.</p>
+      <span class="stat">FHD → WQHD → 4K</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>Wi-Fi 6E in a 2018 laptop</h3>
+      <p>The mods list includes a T480 upgraded to Wi-Fi 6E. Everything else stays stock.</p>
+      <span class="stat">Card swap</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>Copper pads for the T480s</h3>
+      <p>On the slimmer T480s, users fit copper pads to let the CPU stretch its legs, a project listed on the mods page.</p>
+      <span class="stat">T480s cooling mod</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>Firmware you can read</h3>
+      <p>Libreboot and coreboot both support the T480, and the FrankenPad builder ran me_cleaner on the board's outdated Intel ME firmware and booted without errors. Qubes OS users keep a thread of sixty-plus posts on the machine.</p>
+      <span class="stat">coreboot · me_cleaner · Qubes</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>An NVMe drive in the WWAN slot</h3>
+      <p>The WWAN slot takes a 2242 NVMe drive with a mod, giving a second storage slot where the cellular modem would go. A Linux user's TLP dump shows two NVMe drives in one T480.</p>
+      <span class="stat">2242 NVMe · needs a mod</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>BIOS patched by a stranger</h3>
+      <p>Modders on forums unlock the hidden Advanced menu and strip the Wi-Fi/WWAN whitelist from T480 BIOS images. They need <b>your</b> dump, read with a CH341A clip and ASProgrammer, because the mod is per-machine. Tamper-protection beeps are the usual failure, and one thread reports modded files for BIOS 1.50 and 1.52.</p>
+      <span class="stat">CH341A · per-machine · risky</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>macOS on a T480</h3>
+      <p>OpenCore Hackintosh projects exist specifically for the T480, including a dual-boot build. If you wanted to run an Apple OS on a ThinkPad, people have done the legwork.</p>
+      <span class="stat">OpenCore · dual boot</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>The ground-up rebuild</h3>
+      <p>One writeup swapped the 1366x768 TN panel for an Innolux low-power IGZO 1080p one (avoiding BOE and AUO IGZO for ghosting), fitted an X1 Extreme glass trackpad from AliExpress, a backlit Chicony keyboard (FRU 01HX419) and a 3D-printed low-profile TrackPoint cap. The first keyboard was warped and the second had a dead TrackPoint. The third worked. A genuine 72 Wh pack gave 10–14 hours screen-on.</p>
+      <span class="stat">Panel · glass trackpad · keyboard · cap</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>The dGPU heatsink on a laptop with no dGPU</h3>
+      <p>The same builder fitted a roughly $15 AliExpress dGPU heatsink and fan to a machine without the MX150, taped over the part that would touch the missing GPU, and repasted with Kryonaut. Under Cinebench the chip held 3.0–3.1 GHz at about 25 W and 73–75 °C, versus 2.6–2.7 GHz at about 19 W before. Score: about 1330 to about 1580.</p>
+      <span class="stat">+19% Cinebench R20 · ~$15</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>Fixing the battery swap in software</h3>
+      <p>On Linux the Power Bridge can misbehave when you pull a pack. A GitHub project, battery_swap_fix_t480, exists purely for that, which tells you how many people swap batteries on this machine.</p>
+      <span class="stat">GitHub · BinSquare</span>
+    </article>
+    <article class="wcard reveal spot" data-io>
+      <h3>Updating the BIOS from inside Qubes</h3>
+      <p>The Qubes forum has a how-to for updating the T480's BIOS from within Qubes OS. The T480 is a common Qubes machine, and the community there has worked out its firmware chores.</p>
+      <span class="stat">Qubes forum how-to</span>
+    </article>
+  </div>
+  <p class="sub reveal" style="margin-top:1.6rem">Everything here voids something. Do it on a machine you can afford to lose.</p>
+</section>
+
+<section id="parts">
+  <p class="eyebrow reveal">Exhibit H · The parts bin</p>
+  <h2 data-io>Every part that fits. <em>Official, unofficial, unhinged.</em></h2>
+  <p class="sub reveal">Part numbers come from retailer listings, build logs and the people who bolted them in. Drag the six dials and the build sheet fills in with real part numbers, and a meter tells you how far from stock you've drifted.</p>
+
+  <div class="cfg reveal" id="cfg" data-io>
+    <div class="cfg-dials" id="cfgd"></div>
+    <div class="cfg-sheet" id="cfgs" aria-live="polite"></div>
+  </div>
+
+  <h3 class="fx-h reveal">The shelf</h3>
+  <div class="chips reveal" id="pchips" role="group" aria-label="Filter parts">
+    <button type="button" class="chip on" data-f="all">All</button>
+    <button type="button" class="chip" data-f="l">Lenovo-numbered</button>
+    <button type="button" class="chip" data-f="c">Community-tested</button>
+    <button type="button" class="chip" data-f="k">Kits and tools</button>
+  </div>
+  <div class="shelf" id="shelf">
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>Backlit keyboard</b><code>FRU 01HX419</code><p>The same listing carries 01HX459 and 01HX499. One buyer went through a warped unit and a dead-TrackPoint unit before a working Chicony-made one.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>WQHD 14-inch panel</b><code>FRU 00NY664 · LP140QH2-SPB1</code><p>2560 x 1440. It needs the 40-pin cable, because the stock cable has 30 pins.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>40-pin LCD cable</b><code>FRU 01YR503</code><p>Goes with the WQHD panel.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>4G WWAN card (L850-GL)</b><code>FRU 01AX792 · 5W10V25803</code><p>Antenna kit 01YR494 / 01YR495. An L830-EB card, 01AX761, is also listed for the T480.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>Wi-Fi 6 card (AX200)</b><code>FRU 02HK705</code><p>The Lenovo-branded card is the safe choice. The original is the Intel 8265, which carries Bluetooth 4.2 hardware.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>Batteries</b><code>01AV421 · 01AV423 · 01AV427</code><p>Internal 24 Wh is 01AV421. External packs come in 24, 48 and 72 Wh: 01AV423 or 01AV452 for 24 Wh, 01AV427 or 01AV425 for 72 Wh.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>Chargers and ports</b><code>45 W · 65 W USB-C</code><p>65 W is the one to buy. Only one of the two USB-C ports does Thunderbolt 3, Power Delivery, DisplayPort and USB 3.1 Gen 2.</p></div>
+    <div class="part reveal" data-c="l"><span class="pc l">Lenovo part</span><b>Firmware</b><code>BIOS 1.56 · TB 20.22.05.30</code><p>BIOS 1.56 landed in October 2025. The Thunderbolt firmware package from July 2022 is marked Critical.</p></div>
+
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>64 GB of RAM</b><code>2 x Corsair CMSX32GX4M1A2666C18</code><p>Two 32 GB sticks in the T480. The 2666 kit ran down-clocked to 2400.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>4 TB in the 2.5-inch bay</b><code>Samsung 870 QVO MZ-77Q4T0B</code><p>SATA III speeds, and Windows 11 installed on it.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>A 2242 NVMe in the main slot</b><code>WD SN520 512 GB</code><p>Benchmarked well above the stock SATA SSD it replaced, and it left the 2.5-inch bay free.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>Wi-Fi 6E</b><code>Intel Killer AX1675x (AX210), M.2 2230</code><p>Bluetooth 5.2. Replaces the 8265.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>Low-power 1080p panel</b><code>Innolux IGZO</code><p>Swapped in for the 1366 x 768 TN panel. The builder says to avoid BOE and AUO IGZO panels, which ghost.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>Glass trackpad</b><code>X1 Extreme part</code><p>From AliExpress. Needs a little adjusting to centre and picks up hairline scratches.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>TrackPoint cap</b><code>3D-printed, low-profile soft rim</code><p>Shipping from overseas was slow. The builder says the wait was worth it.</p></div>
+    <div class="part reveal" data-c="c"><span class="pc c">Community-tested</span><b>The dGPU heatsink and fan</b><code>about US$15</code><p>Fitted to a machine with no dGPU, with tape over the missing GPU's contact area and Kryonaut on the CPU. It held 3.0 to 3.1 GHz at about 25 W.</p></div>
+
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>T25 FrankenPad bottom half</b><code>S$900 · S$1000 · S$1350</code><p>T25 keyboard, Wi-Fi 6 and a dual heatpipe fan. i5-8250U with iGPU, with the MX150, or an i7 with iGPU only. Prices in Singapore dollars from XY Tech.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>Panels and cables</b><code>S$110 to S$130</code><p>FHD low-power, FHD 120 Hz, 2K matte, 2K HDR glossy or 4K HDR glossy. Cables are S$20 for the 30-pin and S$25 for the 40-pin.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>Lid halves</b><code>S$130 to S$160</code><p>Plastic or magnesium, with an IR camera or a privacy shutter. The panel is extra.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>Spare bottom case</b><code>S$30</code><p>The clips are fragile, so the seller suggests keeping a spare.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Tool</span><b>CH341A programmer</b><code>S$10</code><p>For BIOS modding, which needs soldering.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>M.2 2242 to 4-port USB hub</b><code>S$10</code><p>A WWAN-slot USB hub. Somebody needed it.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>Extra 2242 NVMe</b><code>S$50 (128 GB) to S$135 (512 GB)</code><p>For the second storage slot.</p></div>
+    <div class="part reveal" data-c="k"><span class="pc k">Kit</span><b>Dual heatpipe fan</b><code>S$35</code><p>The T480 dGPU heatsink and fan, sold on its own.</p></div>
+  </div>
+</section>
+
+<section id="linux">
+  <p class="eyebrow reveal">Exhibit I · Linux</p>
+  <h2 data-io>It runs Linux like <em>it was born there.</em></h2>
+  <p class="sub reveal">Every ThinkPad user eventually puts a penguin on it. The T480 is the generation where almost everything works out of the box, and the few things that don't have a known fix. Here is what the forums keep telling each other.</p>
+
+  <div class="lx">
+    <div class="term reveal">
+      <div class="term-bar"><i></i><i></i><i></i><span>~ on a T480, as one does</span></div>
+<div class="term-body"><span class="p">$</span> <span class="w">ls /sys/class/power_supply</span>
+AC  BAT0  BAT1
+<span class="c"># two batteries, both visible. the kernel sees both.</span>
+
+<span class="p">$</span> <span class="w">sudo tlp setcharge 75 80 BAT0</span>
+<span class="p">$</span> <span class="w">sudo tlp setcharge 75 80 BAT1</span>
+<span class="okk">Setting temporary charge thresholds for BAT0:</span>
+<span class="okk">  start = 75, stop = 80</span>
+<span class="c"># battery care, per pack, no vendor app needed</span>
+
+<span class="p">$</span> <span class="w">sudo fwupdmgr update</span>
+<span class="okk">Devices with no available firmware updates: none</span>
+<span class="c"># BIOS and Thunderbolt firmware through LVFS</span>
+
+<span class="p">$</span> <span class="w">cat /proc/acpi/ibm/fan | head -3</span>
+status:   enabled
+speed:    2310
+level:    auto
+<span class="c"># thinkpad_acpi, in-tree, no extra driver</span>
+</div>
+    </div>
+
+    <div class="lx-list reveal">
+      <div><b>BAT0 and BAT1 are separate</b><p>Charge thresholds are set per battery, so you can keep the internal cell and the rear brick at different limits. TLP and the kernel's thinkpad_acpi handle it.</p></div>
+      <div><b>Sleep state option in the BIOS</b><p>Newer ThinkPads let you pick a Linux sleep mode so suspend behaves, a setting users bring up whenever someone asks why the battery drains overnight.</p></div>
+      <div><b>The throttling daemon</b><p>The 8th gen U-series chips get power-limit clamped by firmware. Linux users run <i>throttled</i> or thermald to lift it, and pair it with the dual heatpipe mod above.</p></div>
+      <div><b>TrackPoint under libinput</b><p>The red nub works with no setup, and you can tune the sensitivity and speed through udev rules or your desktop's settings.</p></div>
+      <div><b>One cable, Thunderbolt 3</b><p>bolt authorizes docks on Linux, so the one-cable desk setup carries over.</p></div>
+      <div><b>Firmware updates without Windows</b><p>fwupd pulls BIOS and Thunderbolt updates from LVFS, so nobody has to dig up a Windows installer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="honest">
+  <p class="eyebrow reveal">Exhibit J · The catch</p>
+  <h2 data-io>Every known problem. <em>And its fix.</em></h2>
+  <p class="sub reveal">It's not perfect. Nothing 2018 is. Here is each thing ThinkPad users actually run into, what causes it, and what people did about it. Green means a software fix, orange means you'll need a screwdriver, red means the threads never settled it.</p>
+
+  <div class="probs">
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Performance</span><span class="chip2 fsw">Software fix</span></div>
+      <h3>It throttles long before it's hot</h3>
+      <dl>
+        <dt>What you see</dt><dd>Clocks sag under load and the CPU sits at a low wattage, sometimes while the chassis is barely warm. One thread's user was throttling below 60 °C.</dd>
+        <dt>Why</dt><dd>Forum experts blamed Lenovo's firmware: a high <b>PROCHOT offset</b> that trips the CPU's thermal brake far below its real limit (one wrote about throttling near 65 °C), plus power limits that get lowered on the fly. On Linux, Ubuntu's bug tracker confirms PL1/PL2 come up wrong, and it persisted on BIOS 1.19.</dd>
+        <dt class="f">The fix</dt><dd><b>Windows:</b> in ThrottleStop, turn on PROCHOT Offset, set it to 3 (some users pick 10) and tick Lock. Lock the turbo power limits with the MMIO lock option in the TPL window. If you undervolt, apply the same offset to <b>core and cache</b>: the thread's author saw no effect from core alone (−100 mV was their number). Start it from Task Scheduler.<br><b>Linux:</b> run <i>throttled</i>, a Python script that rewrites the power registers. It doesn't work with Secure Boot on.</dd>
+      </dl>
+      <p class="src">Sources: TechPowerUp thread · Ubuntu bug 1815214</p>
+    </article>
+
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Ports</span><span class="chip2 fhw">Hardware fix</span></div>
+      <h3>Thunderbolt and USB-C stop working</h3>
+      <dl>
+        <dt>What you see</dt><dd>USB-C or Thunderbolt dead, docks not detected, no HDMI over USB-C, charging capped around 15 W or gone, a Thunderbolt error at POST. Threads about exactly this exist for the T480.</dd>
+        <dt>Why</dt><dd>Lenovo said old Thunderbolt 3 firmware wears out the SPI-ROM chip that stores the controller's own firmware. T480 owners describe the same symptoms on the forums.</dd>
+        <dt class="f">The fix</dt><dd>Install Lenovo's Thunderbolt firmware patch (released August 2019, delivered through Lenovo Vantage) <b>before</b> anything else. Don't force-update a controller that's already misbehaving. If the chip is already worn, the repairs people describe are reflashing it with a clip or replacing the Winbond SPI chip and flashing it. If you're buying used, plug a dock in before you pay.</dd>
+      </dl>
+      <p class="src">Sources: Notebookcheck, Thunderbolt 3 failure · ThinkPads forum</p>
+    </article>
+
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Ports</span><span class="chip2 fsw">Easy fix</span></div>
+      <h3>The dock or monitor gets no signal</h3>
+      <dl>
+        <dt>What you see</dt><dd>A USB-C dock or display works in one port and does nothing in the other.</dd>
+        <dt>Why</dt><dd>Only one of the T480's two USB-C ports supports USB 3.1 Gen 2, Power Delivery, DisplayPort and Thunderbolt 3.</dd>
+        <dt class="f">The fix</dt><dd>Move the cable to the other USB-C port. Use that same port when you update the Thunderbolt firmware.</dd>
+      </dl>
+      <p class="src">Source: CloudsPress T480 upgrade guide</p>
+    </article>
+
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Screen</span><span class="chip2 fhw">Check before buying</span></div>
+      <h3>Some panels flicker</h3>
+      <dl>
+        <dt>What you see</dt><dd>Eye strain or headaches on some configurations. Notebookcheck flagged specific T480 panels as a risk for anyone sensitive to flicker.</dd>
+        <dt>Why</dt><dd>PWM backlight dimming on certain panels. The FrankenPad builder described a high-pitched noise from the stock FHD panel as well.</dd>
+        <dt class="f">The fix</dt><dd>Read the panel part number in the listing before you buy. Or swap it: the T480's display connector has four lanes where older ThinkPads have two, which is why QHD and 4K panels work. The FrankenPad builder fitted a UHD panel where the PWM frequency could be raised without the whine.</dd>
+      </dl>
+      <p class="src">Sources: Notebookcheck review · kitsunyan's FrankenPad write-up</p>
+    </article>
+
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Input</span><span class="chip2 fsw">Software fix</span></div>
+      <h3>TrackPoint dies after suspend</h3>
+      <dl>
+        <dt>What you see</dt><dd>After waking from sleep, the TrackPoint and touchpad don't respond until you cold boot.</dd>
+        <dt>Why</dt><dd>Reported on a T480 board running in a modified T25 chassis, so it may be specific to that build. Worth knowing about if you transplant parts.</dd>
+        <dt class="f">The fix</dt><dd>That builder found that leaving <b>NFC enabled in the BIOS</b> avoided it. A cold boot is the fallback.</dd>
+      </dl>
+      <p class="src">Source: kitsunyan's FrankenPad write-up</p>
+    </article>
+
+    <article class="prob reveal spot" data-io>
+      <div class="top"><span class="chip2">Heat</span><span class="chip2 fhw">Hardware fix</span></div>
+      <h3>The chassis runs hot</h3>
+      <dl>
+        <dt>What you see</dt><dd>Fans spin up, the palmrest warms and the i7 won't hold its boost clocks. The ThrottleStop thread's author called the chassis hot and found fan-curve tweaks only partly helped.</dd>
+        <dt>Why</dt><dd>A small heatsink and a slim chassis, plus the firmware limits above.</dd>
+        <dt class="f">The fix</dt><dd>Fresh paste first. Then the tricks from Exhibit E: the dual heatpipe heatsink, a PTM7950 pad, and liquid metal if you accept the risk. The FrankenPad builder measured an i7-8650U holding about 3.4–3.5 GHz in a 15-minute stress test after liquid metal and an undervolt. T480s users also report copper pads. See <a href="#cooling">the cooling exhibit</a>.</dd>
+      </dl>
+      <p class="src">Sources: TechPowerUp thread · FrankenPad write-up · Habr</p>
+    </article>
+  </div>
+  <h3 class="fx-h reveal">More fixes, by operating system</h3>
+  <div class="fixgrid">
+    <div class="fx reveal"><span class="os l">Linux</span><b>Laggy or jumpy touchpad and TrackPoint</b><p>Create <code>/etc/modprobe.d/psmouse.conf</code> containing <code>options psmouse synaptics_intertouch=1</code>, then reload the psmouse module.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Thunderbolt dock won't authorize</b><p>In the BIOS set Security → Thunderbolt 3 to User Authorization. Update the controller from Linux with <code>fwupdmgr refresh</code>, <code>get-updates</code>, then <code>update</code>.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Sudden shutdown when swapping the rear battery</b><p>The system may not switch packs cleanly. A GitHub project, battery_swap_fix_t480, provides fix scripts.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Fingerprint reader</b><p>Needs kernel 5.8.1 or newer, plus libfprint-tod and python-validity.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Cellular modem dead</b><p>The same guide says the Fibocom L850-GL had no working Linux driver. Its suggestions: a USB modem or a different WWAN card.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Wi-Fi missing with a Broadcom card</b><p>Intel cards work out of the box. For Broadcom, find the card with <code>lspci -nn -d 14e4:</code> and install <code>bcmwl-kernel-source</code>.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>NVIDIA MX150 models</b><p>They need the proprietary driver: <code>sudo ubuntu-drivers autoinstall</code> on Ubuntu.</p></div>
+    <div class="fx reveal"><span class="os l">Linux</span><b>Battery thresholds, fan curves</b><p>The usual answers are TLP for charge thresholds and thinkfan for fan control. Pick TLP or power-profiles-daemon, not both.</p></div>
+    <div class="fx reveal"><span class="os w">Windows</span><b>Undervolt resets after reboot</b><p>Run ThrottleStop at logon from Task Scheduler with highest privileges, with the apply-voltages-at-start options ticked. One Tom's Guide poster's XTU offsets reverted after reboots.</p></div>
+    <div class="fx reveal"><span class="os w">Windows</span><b>Thunderbolt firmware</b><p>Get the controller firmware patch through Lenovo's update tools before docks or USB-C start misbehaving.</p></div>
+    <div class="fx reveal"><span class="os b">Both</span><b>Battery drains while shut down</b><p>Reported on a T480s. The suggested fix was a BIOS option that turns off USB charging when the system is off. If it keeps happening, contact Lenovo.</p></div>
+  </div>
+  <p class="sub reveal" style="margin-top:1.6rem">All of these are individual reports from forums and reviews. Check your own BIOS version and panel before you try anything, and back up before flashing.</p>
+</section>
+
+<section id="power">
+  <p class="eyebrow reveal">Exhibit K · Power Bridge</p>
+  <h2 data-io>Two batteries. <em>One keeps you alive</em> while you swap the other.</h2>
+  <p class="sub reveal">A small battery sits inside. A bigger one clips onto the back. Reviewers call out that the T480 is a rare modern laptop with a removable battery plus an internal one. Pick a build, then hot-swap it.</p>
+
+  <div class="bench">
+    <div class="panel2 reveal">
+      <div class="seg" role="group" aria-label="External battery option">
+        <button type="button" id="b0" aria-pressed="false">No rear battery</button>
+        <button type="button" id="b24" aria-pressed="true">24 Wh rear</button>
+        <button type="button" id="b72" aria-pressed="false">72 Wh rear (the brick)</button>
+      </div>
+      <div class="cells" aria-hidden="true">
+        <div class="cell int" id="cin" style="flex-grow:24">24 Wh inside</div>
+        <div class="cell ex" id="cex" style="flex-grow:24">24 Wh rear</div>
+      </div>
+      <div class="total"><span class="n" id="tot">48</span><span class="u">Wh total on your back</span></div>
+      <p class="readout" id="read" aria-live="polite"></p>
+
+      <div class="swap">
+        <svg viewBox="0 0 520 230" role="img" aria-label="Side view of a T480 while its rear battery is swapped. The internal battery keeps powering the machine.">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4a55"/><stop offset="1" stop-color="#9a0017"/></linearGradient>
+            <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2f"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+            <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <ellipse cx="280" cy="206" rx="230" ry="9" fill="#000" opacity=".5"/>
+          <path class="flow" id="flowRear" d="M122 190 H427 V178" fill="none" stroke="#ff9a5c" stroke-width="2" stroke-linecap="round"/>
+          <rect x="110" y="160" width="360" height="22" rx="8" fill="url(#bg2)" stroke="#2d2d32"/>
+          <rect x="132" y="163" width="318" height="3" rx="1.5" fill="#1a1a1d"/>
+          <g transform="rotate(-12 124 160)">
+            <rect class="screen-glow" x="128" y="42" width="8" height="112" rx="3" fill="#ff2d3d" opacity=".7" filter="url(#blur3)"/>
+            <rect x="116" y="34" width="14" height="128" rx="6" fill="#151518" stroke="#2d2d32"/>
+            <rect class="screen-glow" x="130" y="44" width="3" height="108" rx="1.5" fill="#ff6a6f"/>
+          </g>
+          <text x="190" y="152" font-size="10" fill="#b39a97" font-family="monospace">BAT0 internal</text>
+          <rect x="190" y="167" width="170" height="9" rx="3" fill="#7a0013" stroke="#ff2d3d" stroke-opacity=".5"/>
+          <path class="flow" id="flowInt" d="M360 171 H420" fill="none" stroke="#ff9a5c" stroke-width="2" stroke-linecap="round"/>
+          <rect x="420" y="165" width="26" height="12" rx="3" fill="#ff9a5c"/>
+          <text x="424" y="156" font-size="10" fill="#b39a97" font-family="monospace">CPU</text>
+          <g class="pk" id="packA" style="transform-box:fill-box;transform-origin:center"><rect id="rA" x="82" y="150" width="40" height="38" rx="8" fill="url(#pg)"/><text id="tA" x="102" y="173" text-anchor="middle" font-size="9" fill="#fff" font-family="monospace">BAT1</text></g>
+          <g class="pk park" id="packB" style="transform-box:fill-box;transform-origin:center"><rect id="rB" x="82" y="150" width="40" height="38" rx="8" fill="url(#pg)"/><text id="tB" x="102" y="173" text-anchor="middle" font-size="9" fill="#fff" font-family="monospace">spare</text></g>
+        </svg>
+        <div class="sw-meta">
+          <div class="sw-up"><span id="up">00:00</span><small>uptime, never reset</small></div>
+          <button class="btn" type="button" id="swapbtn">Hot-swap the rear battery</button>
+        </div>
+        <div class="sw-status" aria-live="polite"><i class="sw-led" id="led"></i><span id="swst">Running on BAT0 + BAT1.</span></div>
+        <p class="note" style="margin:0.4rem 0 0;font-size:0.8rem">An illustration of the idea, not a measurement.</p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <ol class="steps">
+        <li><b>Rear battery getting low?</b> Keep working. Nothing special to do.</li>
+        <li><b>Slide the latch and pull it off.</b> The internal cell carries the laptop. One user on a forum tried it for the first time just to check and the machine never went dark.</li>
+        <li><b>Click a fresh one in.</b> Charged spares are the whole trick. People carry two.</li>
+        <li><b>Or skip batteries entirely.</b> The charge port is USB-C, so a fast enough power bank works as a fourth option.</li>
+      </ol>
+      <p class="hand fine">fine print I love: if the internal one is already flat, the swap trick doesn't save you. Check before you pull.</p>
+    </div>
+  </div>
+  <p class="note reveal">Linux users have notes too. There's an Arch forum thread on hot-switching between the two batteries, and a FreeBSD user whose machine crashed when battery 0 hit 0% while battery 1 still read 100%. The two packs don't always drain the way you'd guess.</p>
+</section>
+
+<section id="ledger">
+  <p class="eyebrow reveal">Exhibit L · Versus its younger cousins</p>
+  <h2 data-io>Where it wins. <em>Where it doesn't.</em></h2>
+  <p class="sub reveal">I'm biased, not blind. Numbers from Windows Central and the memory-vendor listings.</p>
+
+  <div class="scroll big-s reveal">
+    <table class="ledger">
+      <thead>
+        <tr><th></th><th class="me">T480</th><th>T490</th><th>T480s</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Removable battery</td><td class="me win">Yes, plus internal</td><td>No</td><td>No</td></tr>
+        <tr><td>Battery setup</td><td class="me">24 Wh inside + 24 or 72 Wh rear</td><td>One 50 Wh battery</td><td>One internal battery</td></tr>
+        <tr><td>Reviewer runtime</td><td class="me win">About 9 h on 24+24 Wh</td><td>About 7 h</td><td>n/a</td></tr>
+        <tr><td>Memory</td><td class="me win">Two SO-DIMM slots</td><td>Soldered RAM plus a slot (vendor listings)</td><td>One slot plus soldered 8 GB</td></tr>
+        <tr><td>Lightest weight</td><td class="me">3.6 lb</td><td class="win">3.17 lb</td><td>Lighter than the T480</td></tr>
+        <tr><td>Best screen</td><td class="me">1440p, no HDR</td><td class="win">1440p, up to 500 nits, HDR</td><td>1440p option</td></tr>
+        <tr><td>Bluetooth</td><td class="me">4.1</td><td class="win">5.0</td><td>n/a</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rt reveal" data-io aria-label="Reviewer runtime, to scale on a 10 hour axis">
+    <div class="rt-row"><span>T480</span><div class="track"><div class="fill b" style="--w:90%"></div></div><em>~9 h</em></div>
+    <div class="rt-row"><span>T490</span><div class="track"><div class="fill a" style="--w:70%"></div></div><em>~7 h</em></div>
+  </div>
+  <p class="hand reveal" style="margin-top: 1rem;">T490 wins the spec race. T480 wins the "I can fix this in a parking lot" race.</p>
+</section>
+
+
+</main>
+
+<div class="verdict">
+  <div class="wrap">
+    <p class="eyebrow reveal">Verdict</p>
+    <h2 data-io>Put Linux on it. <em>Then never look back.</em></h2>
+    <p class="reveal">Eight years old, and the whole Linux world is still pointed at it. BIOS and Thunderbolt firmware update from the command line through fwupd. TLP and thinkfan handle power and fans. throttled and intel-undervolt take the heat out. There is a coreboot and Libreboot port, a Qubes thread that never ends, even OpenCore builds. The T480 is the age where the drivers are boring and the guides are long. The rough edges are short: the cellular modem and the fingerprint reader.</p>
+    <p class="reveal">So buy a clean one, drop in 32 GB, swap the screen if you like, run the undervolt guide above, and install Arch or Ubuntu. That's the whole pitch.</p>
+    <span class="sig">— an intensive ThinkPad user</span>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4>Where this came from</h4>
+    <ul>
+      <li><a href="https://www.notebookcheck.net/Lenovo-ThinkPad-T480-i7-8550U-MX150-FHD-Laptop-Review.293682.0.html" target="_blank" rel="noopener">Notebookcheck, T480 review</a></li>
+      <li><a href="https://www.notebookcheck.net/Lenovo-ThinkPad-T480-Series.299710.0.html" target="_blank" rel="noopener">Notebookcheck, T480 series and variants</a></li>
+      <li><a href="https://www.notebookcheck.net/This-popular-classic-ThinkPad-feature-could-return.1265853.0.html" target="_blank" rel="noopener">Notebookcheck, the external battery feature</a></li>
+      <li><a href="https://www.windowscentral.com/lenovo-thinkpad-t490-vs-thinkpad-t480" target="_blank" rel="noopener">Windows Central, T490 vs T480</a></li>
+      <li><a href="https://www.tomshardware.com/laptops/lenovos-hot-swappable-batteries-made-my-colleagues-nostalgic-but-todays-usb-c-solutions-are-better" target="_blank" rel="noopener">Tom's Hardware, hot-swap batteries (and comments)</a></li>
+      <li><a href="https://bbs.archlinux.org/viewtopic.php?id=279930" target="_blank" rel="noopener">Arch forum, hot-switching two batteries</a></li>
+      <li><a href="https://forum.thinkpads.com/viewtopic.php?p=848528" target="_blank" rel="noopener">ThinkPad forum, 2 x 32 GB RAM in a T480</a></li>
+      <li><a href="https://www.forum.thinkpads.com/viewtopic.php?p=882202" target="_blank" rel="noopener">ThinkPad forum, T480 modding guide</a></li>
+      <li><a href="https://libreboot.org/docs/install/t480.html" target="_blank" rel="noopener">Libreboot, install on the T480</a></li>
+      <li><a href="https://doc.coreboot.org/mainboard/lenovo/t480.html" target="_blank" rel="noopener">coreboot docs, T480 / T480s</a></li>
+      <li><a href="https://forum.qubes-os.org/t/lenovo-thinkpad-t480/3290/67" target="_blank" rel="noopener">Qubes forum, ThinkPad T480 thread</a></li>
+      <li><a href="https://habr.com/ru/amp/publications/737244" target="_blank" rel="noopener">Habr, T480 cooling comparison (Russian)</a></li>
+      <li><a href="https://wiki.archlinux.org/title/Lenovo_ThinkPad_T480" target="_blank" rel="noopener">Arch Wiki, ThinkPad T480</a></li>
+      <li><a href="https://github.com/erpalma/throttled" target="_blank" rel="noopener">GitHub, throttled</a></li>
+      <li><a href="https://linrunner.de/tlp/settings/battery.html" target="_blank" rel="noopener">TLP docs, battery care</a></li>
+      <li><a href="https://www.crucial.in/compatible-upgrade-for/lenovo/thinkpad-t480" target="_blank" rel="noopener">Crucial, T480 memory compatibility</a></li>
+      <li><a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-t-series-laptops/thinkpad-t480-type-20l5-20l6" target="_blank" rel="noopener">Lenovo support, machine types 20L5 / 20L6</a></li>
+      <li><a href="https://techaeris.com/2018/07/09/lenovo-thinkpad-t480-review-powerful-efficient-workhorse-notebook-thunderbolt-3/" target="_blank" rel="noopener">Techaeris, T480 review</a></li>
+      <li><a href="https://www.eweek.com/de/pc-hardware/lenovo-refines-features-performance-in-familiar-thinkpad-t480-design/" target="_blank" rel="noopener">eWeek, T480 review</a></li>
+      <li><a href="https://www.neowin.net/news/lenovo-thinkpad-t480-review-its-a-solid-workhorse" target="_blank" rel="noopener">Neowin, T480 review</a></li>
+      <li><a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1815214" target="_blank" rel="noopener">Ubuntu bug 1815214, T480 power-limit throttling</a></li>
+      <li><a href="https://www.techpowerup.com/forums/threads/lenovo-t480-thermal-throttling-below-60c.270385/" target="_blank" rel="noopener">TechPowerUp, T480 throttling below 60 °C</a></li>
+      <li><a href="https://www.notebookcheck.net/ThinkPad-Thunderbolt-3-failure-What-s-happening-why-it-s-happening-and-how-to-fix-it.451207.0.html" target="_blank" rel="noopener">Notebookcheck, ThinkPad Thunderbolt 3 failure</a></li>
+      <li><a href="https://p.lemmy.world/post/lemmy.world/16410934" target="_blank" rel="noopener">Lemmy, T480 battery not supported</a></li>
+      <li><a href="https://kitsunyan.github.io/blog/frankenpad-story.html" target="_blank" rel="noopener">kitsunyan, A FrankenPad Story</a></li>
+      <li><a href="https://github.com/mxxivcz/awesome-thinkpad-mods" target="_blank" rel="noopener">GitHub, awesome-thinkpad-mods</a></li>
+      <li><a href="https://github.com/dipch/Thinkpad-T480-cpu-throttling-fix-linux" target="_blank" rel="noopener">GitHub, dipch's T480 throttling fix for Linux</a></li>
+      <li><a href="https://www.notebookcheck.net/More-performance-and-quieter-fans-with-Intel-XTU-Undervolting-the-ThinkPad-X1-Carbon-2018-ThinkPad-T480s.296752.0.html" target="_blank" rel="noopener">Notebookcheck, undervolting the X1 Carbon 2018 and T480s</a></li>
+      <li><a href="https://dev.to/niklaszantner/powersaving-on-a-thinkpad-t480s-running-arch-linux-47p3" target="_blank" rel="noopener">dev.to, power saving on a T480s with Arch</a></li>
+      <li><a href="https://www.ristrettorambles.com/upgrading-settling-into-the-thinkpad-t480" target="_blank" rel="noopener">RistrettoRambles, upgrading the T480</a></li>
+      <li><a href="https://www.bios-mods.com/forum/Thread-Lenovo-T480-Bios-Mod" target="_blank" rel="noopener">bios-mods.com, Lenovo T480 BIOS mod</a></li>
+      <li><a href="https://forums.tomsguide.com/threads/undervolting-the-t480s-battery-issue-while-laptop-is-shut-down.439434/" target="_blank" rel="noopener">Tom's Guide, undervolting the T480s</a></li>
+      <li><a href="https://linuxvox.com/blog/thinkpad-t480-linux/" target="_blank" rel="noopener">LinuxVox, ThinkPad T480 with Linux</a></li>
+      <li><a href="https://www.xyte.ch/shop/t25-frankenpad-kit/" target="_blank" rel="noopener">XY Tech, T25 FrankenPad kit</a></li>
+      <li><a href="https://benny.istan.to/blog/20220501-maximizing-thinkpad-t480" target="_blank" rel="noopener">Benny Istanto, maximizing the T480</a></li>
+      <li><a href="https://www.cloudspress.com/lenovo-thinkpad-t480-upgrade-guide-what-to-upgrade-what-to-check-and-when-to-replace/" target="_blank" rel="noopener">CloudsPress, T480 upgrade guide</a></li>
+      <li><a href="https://www.snbforums.com/threads/compatible-wireless-ax-network-card-for-lenovo-t480.65056/" target="_blank" rel="noopener">SNBForums, Wi-Fi 6 card in a T480</a></li>
+      <li><a href="https://www.myfixguide.com/store/keyboard-for-thinkpad-t480-01hx419/" target="_blank" rel="noopener">MyFixGuide, T480 keyboard 01HX419</a></li>
+      <li><a href="https://archlinux.org/packages/extra/x86_64/intel-undervolt/" target="_blank" rel="noopener">Arch package, intel-undervolt</a></li>
+      <li><a href="https://github.com/kitsunyan/intel-undervolt" target="_blank" rel="noopener">GitHub, intel-undervolt</a></li>
+      <li><a href="https://github.com/georgewhewell/undervolt" target="_blank" rel="noopener">GitHub, undervolt (Python)</a></li>
+    </ul>
+    <p class="disc">Unofficial fan page for personal, non-commercial use. ThinkPad and Lenovo are trademarks of Lenovo, and this page is not affiliated with or endorsed by them.</p>
+    <p class="small">A fan page. Not affiliated with Lenovo. Reviews, retailer listings and ThinkPad user forums were the sources, not Lenovo's own site. User reports are individual experiences; your results will vary. Flashing firmware and swapping heatsinks can brick or damage a machine.</p>
+    <div class="foot-actions">
+      <button class="btn ghost" type="button" data-replay>Replay intro</button>
+      <a class="btn ghost" href="#top" style="text-decoration:none">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = false;
+  try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /* ---- intro keyboard, with a key-light ripple ---- */
+  var rows = [
+    ["Esc|1","_","F1","F2","F3","F4","_","F5","F6","F7","F8","_","F9","F10","F11","F12","_","Home","End","Ins","Del"],
+    ["`","1","2","3","4","5","6","7","8","9","0","-","=","Bksp|2"],
+    ["Tab|1.5","Q","W","E","R","T","Y","U","I","O","P","[","]","\\|1.5"],
+    ["Caps|1.75","A","S","D","F","G","H","J","K","L",";","'","Enter|2.25"],
+    ["Shift|2.25","Z","X","C","V","B","N","M",",",".","/","Shift|2.75"],
+    ["Ctrl|1.1","Fn|1.1","Win|1.1","Alt|1.1"," |4.6","Alt|1","PrtSc|1","Ctrl|1","\u25C0","ud","\u25B6"]
+  ];
+  function buildKeys() {
+    var kb = $("#kb");
+    if (!kb || kb.children.length) return;
+    rows.forEach(function (r, ri) {
+      var row = document.createElement("div");
+      row.className = "r";
+      r.forEach(function (t, ci) {
+        var p = t.split("|"), k = document.createElement("i");
+        if (p[0] === "_") { k.className = "sp"; row.appendChild(k); return; }
+        k.style.flex = p[1] || 1;
+        k.style.setProperty("--d", (ri * 0.16 + ci * 0.03).toFixed(2) + "s");
+        if (p[0] === "ud") { k.className = "ud"; k.innerHTML = "<b>\u25B2</b><b>\u25BC</b>"; }
+        else if (p[0].trim()) k.setAttribute("data-l", p[0]);
+        row.appendChild(k);
+      });
+      kb.appendChild(row);
+    });
+  }
+
+  /* ---- red dot on the i, placed from real font metrics ---- */
+  function fixDots() {
+    try {
+      var c = document.createElement("canvas").getContext("2d");
+      $$(".idot").forEach(function (el) {
+        var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+        c.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+        var m = c.measureText("ı");
+        if (!m.fontBoundingBoxAscent) return;
+        var base = (fs - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2 + m.fontBoundingBoxAscent;
+        el.style.setProperty("--dy", ((base - m.actualBoundingBoxAscent - fs * 0.2) / fs) + "em");
+      });
+    } catch (e) {}
+  }
+
+  buildKeys();
+  var introEl = $("#intro");
+  var tpl = introEl ? introEl.outerHTML : "";
+  fixDots();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fixDots);
+  window.addEventListener("load", fixDots);
+
+  /* ---- the page wakes up when the intro ends ---- */
+  var isReady = false;
+  function countUp() {
+    $$("[data-count]").forEach(function (el) {
+      var to = +el.getAttribute("data-count");
+      if (reduce) { el.textContent = to; return; }
+      var t0 = performance.now(), dur = 1500;
+      el.textContent = "0";
+      (function step(t) {
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(to * e);
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }
+  function ready() {
+    if (isReady) return;
+    isReady = true;
+    root.classList.add("ready");
+    setTimeout(countUp, reduce ? 0 : 650);
+  }
+  function skip() {
+    var el = $("#intro");
+    if (el) { el.classList.add("gone"); el.setAttribute("aria-hidden", "true"); }
+    ready();
+  }
+  if (reduce || !introEl) ready(); else setTimeout(ready, 5000);
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("[data-skip]")) skip();
+    if (e.target.closest("[data-replay]") && tpl) {
+      var old = $("#intro");
+      if (old) old.remove();
+      document.body.insertAdjacentHTML("afterbegin", tpl);
+      fixDots();
+      window.scrollTo(0, 0);
+    }
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") skip(); });
+
+  /* ---- pointer: intro tilt, hero glow, card spotlight ---- */
+  var hero = $("#top");
+  document.addEventListener("pointermove", function (e) {
+    var tilt = $("#tilt");
+    if (tilt) {
+      tilt.style.setProperty("--ty", ((e.clientX / innerWidth - 0.5) * 12).toFixed(2) + "deg");
+      tilt.style.setProperty("--tx", ((0.5 - e.clientY / innerHeight) * 7).toFixed(2) + "deg");
+    }
+    if (hero) {
+      var hr = hero.getBoundingClientRect();
+      if (e.clientY >= hr.top && e.clientY <= hr.bottom) {
+        hero.style.setProperty("--hx", (e.clientX - hr.left) + "px");
+        hero.style.setProperty("--hy", (e.clientY - hr.top) + "px");
+      }
+    }
+    var t = e.target.closest ? e.target.closest(".spot") : null;
+    if (t) {
+      var r = t.getBoundingClientRect();
+      t.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      t.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }
+  }, { passive: true });
+
+  /* ---- scroll progress, dock, active section ---- */
+  var bar = $("#scrollbar"), dock = $("#dock"), dockin = $("#dockin"), pill = $("#pill");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var h = root, max = h.scrollHeight - h.clientHeight;
+    bar.style.setProperty("--p", (max > 0 ? Math.min(1, Math.max(0, h.scrollTop / max)) : 0).toFixed(4));
+    dock.classList.toggle("show", h.scrollTop > (hero ? hero.offsetHeight - 140 : 400));
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+  var links = $$("a", dockin);
+  function setActive(id) {
+    links.forEach(function (a) {
+      var on = a.getAttribute("href") === "#" + id;
+      a.classList.toggle("on", on);
+      if (on) {
+        pill.style.width = a.offsetWidth + "px";
+        pill.style.transform = "translateX(" + a.offsetLeft + "px)";
+        try { dockin.scrollTo({ left: a.offsetLeft - dockin.clientWidth / 2 + a.offsetWidth / 2, behavior: "smooth" }); } catch (e) {}
+      }
+    });
+  }
+  if ("IntersectionObserver" in window) {
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    $$("main section").forEach(function (s) { sio.observe(s); });
+  }
+
+  /* ---- reveal flags for headings, bars, charts ---- */
+  var ios = $$("[data-io]");
+  if ("IntersectionObserver" in window) {
+    var rio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } });
+    }, { threshold: 0.25 });
+    ios.forEach(function (el) { rio.observe(el); });
+  } else { ios.forEach(function (el) { el.classList.add("in"); }); }
+
+  /* ---- hero embers ---- */
+  (function () {
+    var c = $("#embers");
+    if (!c || reduce || !c.getContext) return;
+    var ctx = c.getContext("2d"), W = 0, H = 0, ps = [], on = true;
+    function size() {
+      var d = Math.min(2, window.devicePixelRatio || 1);
+      W = c.clientWidth; H = c.clientHeight;
+      c.width = W * d; c.height = H * d;
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+    }
+    function mk(init) {
+      return { x: Math.random() * W, y: init ? Math.random() * H : H + 10, r: Math.random() * 1.7 + 0.5, vy: -(Math.random() * 0.45 + 0.15), a: Math.random() * 0.55 + 0.2, ph: Math.random() * 6.28 };
+    }
+    size();
+    for (var i = 0, n = Math.round(Math.min(70, W / 16)); i < n; i++) ps.push(mk(true));
+    function frame() {
+      if (!on) return;
+      ctx.clearRect(0, 0, W, H);
+      ps.forEach(function (p) {
+        p.y += p.vy; p.ph += 0.015; p.x += Math.sin(p.ph) * 0.25;
+        if (p.y < -10) Object.assign(p, mk(false));
+        var fade = Math.min(1, (H - p.y) / 120) * Math.min(1, p.y / 90 + 0.2);
+        ctx.fillStyle = "rgba(255,70,80," + (p.a * 0.14 * fade).toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, 6.283); ctx.fill();
+        ctx.fillStyle = "rgba(255,150,120," + (p.a * fade).toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+      });
+      requestAnimationFrame(frame);
+    }
+    frame();
+    window.addEventListener("resize", size);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        var vis = es[0].isIntersecting;
+        if (vis && !on) { on = true; frame(); } else if (!vis) { on = false; }
+      }).observe(c);
+    }
+  })();
+
+  /* ---- battery bench + hot-swap ---- */
+  var opts = {
+    b0:  { ex: 0,  total: 24, text: "Lightest carry. Just the internal cell, about 24 Wh. Fine for a meeting, not for a train ride." },
+    b24: { ex: 24, total: 48, text: "The sweet spot most reviewers test. Windows Central clocked roughly nine hours on this pairing, against about seven for a T490 with its single 50 Wh battery." },
+    b72: { ex: 72, total: 96, text: "The long-haul build. The rear pack sticks out and adds weight, but you can still hot-swap it for a second one. Users treat it as the outlet-free option." }
+  };
+  var cin = $("#cin"), cex = $("#cex"), tot = $("#tot"), read = $("#read"), ids = ["b0", "b24", "b72"];
+  var pA = $("#packA"), pB = $("#packB"), rA = $("#rA"), rB = $("#rB"), tA = $("#tA"), tB = $("#tB");
+  var flowRear = $("#flowRear"), led = $("#led"), swst = $("#swst"), swapbtn = $("#swapbtn");
+  var cur = "A", busy = false, token = 0, shownTotal = 24;
+  function status(txt, amber) { swst.textContent = txt; led.classList.toggle("amber", !!amber); }
+  function tween(to) {
+    var from = shownTotal, t0 = performance.now();
+    shownTotal = to;
+    if (reduce) { tot.textContent = to; return; }
+    (function step(t) {
+      var p = Math.min(1, (t - t0) / 500), e = 1 - Math.pow(1 - p, 3);
+      tot.textContent = Math.round(from + (to - from) * e);
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  function setPacks(ex) {
+    token++; busy = false; cur = "A";
+    if (ex === 0) {
+      pA.style.visibility = pB.style.visibility = "hidden";
+      flowRear.classList.add("off");
+      swapbtn.disabled = true;
+      status("No rear battery fitted. Nothing to swap, the internal cell runs it all.", false);
+      return;
+    }
+    var w = ex === 24 ? 40 : 64, h = ex === 24 ? 38 : 46;
+    [[rA, tA], [rB, tB]].forEach(function (p) {
+      p[0].setAttribute("x", 122 - w); p[0].setAttribute("y", 188 - h);
+      p[0].setAttribute("width", w); p[0].setAttribute("height", h);
+      p[1].setAttribute("x", 122 - w / 2); p[1].setAttribute("y", 188 - h / 2 + 3);
+    });
+    pA.style.visibility = pB.style.visibility = "visible";
+    pA.classList.remove("park"); pB.classList.add("park");
+    tA.textContent = "BAT1"; tB.textContent = "spare";
+    flowRear.classList.remove("off");
+    swapbtn.disabled = false;
+    status("Running on BAT0 + BAT1.", false);
+  }
+  function pick(id) {
+    var o = opts[id];
+    if (o.ex === 0) { cex.className = "cell ex empty"; cex.textContent = ""; }
+    else { cex.className = "cell ex"; cex.style.flexGrow = o.ex; cex.textContent = o.ex + " Wh rear"; }
+    tween(o.total);
+    read.textContent = o.text;
+    ids.forEach(function (k) { $("#" + k).setAttribute("aria-pressed", k === id ? "true" : "false"); });
+    setPacks(o.ex);
+  }
+  ids.forEach(function (k) { $("#" + k).addEventListener("click", function () { pick(k); }); });
+  async function swap() {
+    if (busy) return;
+    busy = true; swapbtn.disabled = true;
+    var my = token, out = cur === "A" ? pA : pB, inn = cur === "A" ? pB : pA;
+    var outT = cur === "A" ? tA : tB, inT = cur === "A" ? tB : tA;
+    status("Latch released. BAT1 sliding out.", false);
+    out.classList.add("park"); outT.textContent = "spare"; flowRear.classList.add("off");
+    await wait(1200); if (my !== token) return;
+    status("Running on BAT0 alone. The screen never blinked.", true);
+    await wait(1500); if (my !== token) return;
+    status("Fresh BAT1 clicking in.", true);
+    inn.classList.remove("park"); inT.textContent = "BAT1";
+    await wait(1200); if (my !== token) return;
+    flowRear.classList.remove("off");
+    status("BAT1 online. Uptime kept counting.", false);
+    cur = cur === "A" ? "B" : "A";
+    busy = false; swapbtn.disabled = false;
+  }
+  swapbtn.addEventListener("click", swap);
+  pick("b24");
+  var upEl = $("#up"), t0 = Date.now();
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  setInterval(function () { var s = Math.floor((Date.now() - t0) / 1000); upEl.textContent = pad(Math.floor(s / 60)) + ":" + pad(s % 60); }, 1000);
+
+  /* ---- coreboot terminal types itself in, flash blocks ---- */
+  (function () {
+    var tb = $("#termbody"), term = $("#term");
+    if (tb && term && !reduce && "IntersectionObserver" in window) {
+      var lines = $$(".ln", tb), started = false;
+      tb.classList.add("typing");
+      var tio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting && !started) {
+          started = true;
+          lines.forEach(function (l, i) { setTimeout(function () { l.classList.add("vis"); }, i * 140 + 200); });
+          tio.disconnect();
+        }
+      }, { threshold: 0.3 });
+      tio.observe(term);
+    }
+    var host = $("#blocks"), btn = $("#flashbtn"), lbl = $("#flashlbl");
+    if (!host) return;
+    for (var i = 0; i < 16; i++) host.appendChild(document.createElement("i"));
+    var bl = $$("i", host), running = false;
+    function seq(n, ms, fn) {
+      return new Promise(function (res) {
+        var i = 0;
+        (function go() { if (i >= n) return res(); fn(i++); setTimeout(go, ms); })();
+      });
+    }
+    btn.addEventListener("click", async function () {
+      if (running) return;
+      running = true; btn.disabled = true;
+      bl.forEach(function (b) { b.className = ""; });
+      var q = reduce ? 1 : 1;
+      lbl.textContent = "16 MiB chip · erasing";
+      await seq(16, 35 * q, function (i) { bl[i].className = "w"; });
+      await wait(250);
+      bl.forEach(function (b) { b.className = ""; });
+      await wait(200);
+      await seq(16, 120 * q, function (i) { bl[i].className = "w"; lbl.textContent = "16 MiB chip · writing " + (i + 1) + "/16"; });
+      lbl.textContent = "16 MiB chip · verifying";
+      await seq(16, 70 * q, function (i) { bl[i].className = "v"; });
+      lbl.textContent = "16 MiB chip · verified";
+      btn.textContent = "Play it again"; btn.disabled = false; running = false;
+    });
+  })();
+
+  /* ---- heatsink toggle ---- */
+  (function () {
+    var b1 = $("#hs1"), b2 = $("#hs2"), pipeB = $("#pipeB"), gpu = $("#gpuPad"), hot = $("#hotspot");
+    var lab = $("#hlab"), big = $("#hbig"), sub = $("#hsub");
+    if (!b1) return;
+    function heat(two) {
+      b1.setAttribute("aria-pressed", two ? "false" : "true");
+      b2.setAttribute("aria-pressed", two ? "true" : "false");
+      pipeB.style.opacity = two ? 1 : 0; gpu.style.opacity = two ? 1 : 0;
+      hot.style.opacity = two ? 0.3 : 1;
+      lab.textContent = two ? "Dual pipe, about 93 g" : "Single pipe, 69 g";
+      big.textContent = two ? "no throttling" : "96 °C";
+      sub.textContent = two ? "Plain paste was enough to stop the throttling. PTM7950 took off a couple more degrees." : "Reached almost immediately with regular paste, then the CPU throttled.";
+    }
+    b1.addEventListener("click", function () { heat(false); });
+    b2.addEventListener("click", function () { heat(true); });
+    heat(false);
+  })();
+
+  /* ---- mod wall filter ---- */
+  (function () {
+    var fb = $$("#filters button"), mods = $$("#mods-grid .mod");
+    if (!fb.length) return;
+    fb.forEach(function (b) {
+      var f = b.getAttribute("data-f");
+      var n = f === "all" ? mods.length : mods.filter(function (m) { return m.getAttribute("data-cat") === f; }).length;
+      $("span", b).textContent = n;
+      b.addEventListener("click", function () {
+        fb.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        mods.forEach(function (m) {
+          var show = f === "all" || m.getAttribute("data-cat") === f;
+          if (show && m.hidden) {
+            m.hidden = false; m.classList.remove("pop"); void m.offsetWidth; m.classList.add("pop");
+          } else if (!show) { m.hidden = true; }
+        });
+      });
+    });
+  })();
+})();
+</script>
+<script>
+(function () {
+  var reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  /* h2 words rise out of a blur */
+  [].slice.call(document.querySelectorAll("h2")).forEach(function (h) {
+    var i = 0;
+    (function walk(n) {
+      [].slice.call(n.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var f = document.createDocumentFragment();
+          c.nodeValue.split(/(\s+)/).forEach(function (p) {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { f.appendChild(document.createTextNode(p)); return; }
+            var s = document.createElement("span"); s.className = "wd"; s.style.setProperty("--i", i++); s.textContent = p; f.appendChild(s);
+          });
+          n.replaceChild(f, c);
+        } else if (c.nodeType === 1) walk(c);
+      });
+    })(h);
+  });
+  /* card tilt on hover */
+  try {
+    if (!reduce && window.matchMedia("(hover: hover)").matches) {
+      [].slice.call(document.querySelectorAll(".prob, .wcard")).forEach(function (el) {
+        el.addEventListener("pointermove", function (e) {
+          var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+          el.style.transform = "perspective(900px) rotateX(" + (-y * 4).toFixed(2) + "deg) rotateY(" + (x * 5).toFixed(2) + "deg)";
+        });
+        el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+      });
+    }
+  } catch (e) {}
+  /* undervolt zone map */
+  var sl = document.getElementById("uvr");
+  if (sl) {
+    var reps = [
+      [100, "Zantner, T480s i5-8250U (cache)"], [105, "dipch, T480s i7-8550U (core + cache)"], [110, "Notebookcheck, X1 Carbon 6 i7-8550U"],
+      [120, "Tom's Guide poster, T480s (core)"], [125, "Notebookcheck, T480s i5-8250U"], [125, "Zantner, T480s i5-8250U (core)"], [160, "RistrettoRambles, T480 i5-8250U (core + cache)"]
+    ];
+    var marks = document.getElementById("uvm"), v = document.getElementById("uvv"), z = document.getElementById("uvz"), p = document.getElementById("uvp");
+    reps.forEach(function (r) { var d = document.createElement("i"); d.style.left = (r[0] / 170 * 100) + "%"; d.title = "−" + r[0] + " mV · " + r[1]; marks.appendChild(d); });
+    function zone(n) {
+      if (n === 0) return "Stock. Nothing changed yet.";
+      if (n <= 60) return "Gentle. Reports say almost every chip handles this.";
+      if (n <= 100) return "Common territory. Several users report values here.";
+      if (n <= 125) return "The sweet spot in these reports. Stable for them, so test yours.";
+      if (n <= 160) return "Aggressive. Reported after about a week of testing.";
+      return "Past anything in the reports above. Expect crashes.";
+    }
+    function upd() {
+      var n = +sl.value;
+      v.textContent = "−" + n + " mV";
+      z.textContent = zone(n);
+      var near = reps.filter(function (r) { return Math.abs(r[0] - n) <= 10; });
+      p.textContent = n === 0 ? "Drag the slider. Dots on the bar are the values people reported." : (near.length ? "Reported near here: " + near.map(function (r) { return "−" + r[0] + " (" + r[1] + ")"; }).join("; ") + "." : "No report within 10 mV of this value.");
+      sl.setAttribute("aria-valuetext", v.textContent);
+    }
+    sl.addEventListener("input", upd); upd();
+  }
+})();
+</script>
+<script>
+(function () {
+  var reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  /* ---- build configurator ---- */
+  var D = [
+    { k: "mem", name: "Memory", steps: [
+      { l: "8 GB", t: "8 GB", s: "l", p: "1 x 8 GB DDR4 SO-DIMM", n: "One build's stock config. There are two slots, so a matched pair gets you dual channel." },
+      { l: "16 GB", t: "16 GB", s: "l", p: "2 x 8 GB DDR4-2400 SO-DIMM", n: "A matched pair for dual channel. Laptop DDR4 only, not DDR5 or desktop DIMMs." },
+      { l: "32 GB", t: "32 GB", s: "l", p: "2 x 16 GB DDR4 SO-DIMM", n: "The maximum in Lenovo's listed configurations." },
+      { l: "64 GB", t: "64 GB", s: "c", p: "2 x 32 GB, e.g. Corsair CMSX32GX4M1A2666C18", n: "Two 32 GB sticks work. The 2666 kit ran down-clocked to 2400." } ] },
+    { k: "sto", name: "Storage", steps: [
+      { l: "SATA", t: "2.5-inch SATA", s: "l", p: "7 mm SATA SSD", n: "A 4 TB Samsung 870 QVO (MZ-77Q4T0B) has been installed here, at SATA III speeds." },
+      { l: "NVMe", t: "M.2 NVMe", s: "l", p: "M.2 2280 PCIe NVMe, 2242 fits too", n: "The main bay takes 2.5-inch SATA or M.2 2280, not both. A WD SN520 512 GB in 2242 beat the SATA SSD it replaced." },
+      { l: "NVMe x2", t: "Two NVMe drives", s: "k", p: "2242 NVMe in the WWAN slot", n: "It replaces WWAN, and some boards run that slot at PCIe 3.0 x2. Don't assume a 2280 fits." } ] },
+    { k: "disp", name: "Display", steps: [
+      { l: "HD", t: "1366 x 768", s: "l", p: "Stock TN panel, 30-pin cable", n: "The basic panel. Plenty of builders replace it first." },
+      { l: "FHD", t: "1920 x 1080", s: "l", p: "FHD IPS, or Innolux IGZO low-power, 30-pin cable", n: "One builder swapped in an Innolux IGZO low-power panel and warns off BOE and AUO IGZO for ghosting." },
+      { l: "WQHD", t: "2560 x 1440", s: "l", p: "FRU 00NY664 (LP140QH2-SPB1) + 40-pin cable FRU 01YR503", n: "It needs the 40-pin cable because the stock cable has 30 pins." },
+      { l: "4K", t: "3840 x 2160", s: "k", p: "UHD panel + 40-pin cable", n: "XY Tech sells a 4K HDR glossy panel. Power draw is the trade-off." } ] },
+    { k: "wifi", name: "Wireless", steps: [
+      { l: "8265", t: "Intel 8265", s: "l", p: "Intel Wireless-AC 8265", n: "The original card, with Bluetooth 4.2 hardware." },
+      { l: "AX200", t: "Intel AX200", s: "c", p: "Lenovo FRU 02HK705", n: "One thread says go Lenovo-branded, though a retail AX200 worked for one user at about 580 Mbps on gigabit fibre." },
+      { l: "AX210", t: "AX210 / Killer 6E", s: "c", p: "Intel Killer AX1675x, M.2 2230, Bluetooth 5.2", n: "Fitted in a 2022 upgrade. Wi-Fi 6E needs a compatible router and antennas." } ] },
+    { k: "kb", name: "Keyboard", steps: [
+      { l: "Stock", t: "Stock keyboard", s: "l", p: "Match your layout, backlit or not", n: "The six-row ThinkPad keyboard." },
+      { l: "Backlit", t: "Backlit Chicony", s: "l", p: "FRU 01HX419 (also 01HX459, 01HX499)", n: "One buyer went through a warped unit and a dead-TrackPoint unit before a good one arrived." },
+      { l: "T25", t: "T25 seven-row", s: "k", p: "XY Tech T25 FrankenPad kit", n: "The T480 can be modded to take the T25 keyboard. The kit's bottom half comes with Wi-Fi 6 and a dual heatpipe fan." } ] },
+    { k: "cool", name: "Cooling", steps: [
+      { l: "Stock", t: "Stock heatsink", s: "l", p: "Single heatpipe", n: "2.6 to 2.7 GHz at about 19 W under Cinebench in one test." },
+      { l: "Dual pipe", t: "dGPU heatsink + fan", s: "c", p: "about US$15, or XY Tech's S$35 dual heatpipe fan", n: "Tape over the missing GPU's contact area, repaste with Kryonaut. 3.0 to 3.1 GHz at about 25 W and 73 to 75 °C. Cinebench R20 about 1330 to 1580." },
+      { l: "+ Undervolt", t: "Heatsink + undervolt", s: "c", p: "intel-undervolt or ThrottleStop", n: "A T480s reached about 3.9 GHz single-core with throttled and a -105 mV undervolt. See the undervolt lab." } ] }
+  ];
+  var CHIP = { l: "Lenovo part", c: "Community-tested", k: "Mod or kit" }, W = { l: 0, c: 1, k: 2 };
+  var cfg = document.getElementById("cfg"), dEl = document.getElementById("cfgd"), sEl = document.getElementById("cfgs");
+  if (cfg && dEl && sEl) {
+    var val = D.map(function () { return 0; }), maxScore = 0, touched = false, rows = {}, inputs = {}, dials = {};
+    D.forEach(function (d) { maxScore += Math.max.apply(null, d.steps.map(function (x) { return W[x.s]; })); });
+    D.forEach(function (d) {
+      var el = document.createElement("div"); el.className = "dial"; el.setAttribute("data-k", d.k);
+      el.innerHTML = '<div class="dial-h"><span>' + d.name + '</span><b></b></div><div class="dial-t"><i class="dial-fill"></i><input type="range" min="0" max="' + (d.steps.length - 1) + '" step="1" value="0" aria-label="' + d.name + '"></div><div class="dial-s">' + d.steps.map(function (s) { return "<span>" + s.l + "</span>"; }).join("") + "</div>";
+      dEl.appendChild(el); dials[d.k] = el; inputs[d.k] = el.querySelector("input");
+    });
+    sEl.innerHTML = '<div class="sh-h"><span>Build sheet</span><span id="shs">T480</span></div>' + D.map(function (d) { return '<div class="sh-row" data-k="' + d.k + '"></div>'; }).join("") + '<div class="meter"><div class="meter-bar"><i id="mbar"></i></div><div class="meter-t"><span>Mod meter</span><b id="mlab">Sleeper</b></div></div>';
+    D.forEach(function (d) { rows[d.k] = sEl.querySelector('[data-k="' + d.k + '"]'); });
+    var mbar = document.getElementById("mbar"), mlab = document.getElementById("mlab");
+    function paint(i, flash) {
+      var d = D[i], s = d.steps[val[i]], r = rows[d.k];
+      r.innerHTML = '<div class="sh-line"><span class="sh-k">' + d.name + '</span><b class="sh-t">' + s.t + '</b><span class="pc ' + s.s + '">' + CHIP[s.s] + '</span></div><code class="sh-p">' + s.p + '</code><p class="sh-n">' + s.n + "</p>";
+      dials[d.k].querySelector(".dial-h b").textContent = s.t;
+      [].forEach.call(dials[d.k].querySelectorAll(".dial-s span"), function (x, j) { x.className = j === val[i] ? "on" : ""; });
+      if (flash && !reduce) { r.classList.remove("flash"); void r.offsetWidth; r.classList.add("flash"); }
+    }
+    function meter() {
+      var sc = 0; D.forEach(function (d, i) { sc += W[d.steps[val[i]].s]; });
+      var m = maxScore ? sc / maxScore : 0;
+      mbar.style.setProperty("--m", Math.max(4, m * 100).toFixed(1));
+      mlab.textContent = m < 0.15 ? "Sleeper: stock and perfect" : m < 0.4 ? "Tinkerer" : m < 0.7 ? "Hardware hacker" : "FrankenPad territory";
+    }
+    function fill(i, f) { dials[D[i].k].querySelector(".dial-t").style.setProperty("--p", (f / (D[i].steps.length - 1) * 100).toFixed(1)); dials[D[i].k].querySelector(".dial-fill").style.setProperty("--p", (f / (D[i].steps.length - 1) * 100).toFixed(1)); }
+    D.forEach(function (d, i) {
+      inputs[d.k].addEventListener("input", function () {
+        touched = true; cfg.classList.remove("idle");
+        val[i] = +inputs[d.k].value; fill(i, val[i]); paint(i, true); meter();
+      });
+      fill(i, 0); paint(i, false);
+    });
+    meter();
+    function set(i, f) { var n = Math.round(f); fill(i, f); inputs[D[i].k].value = n; if (n !== val[i]) { val[i] = n; paint(i, true); meter(); } }
+    var preset = [2, 1, 2, 1, 1, 1];
+    function demo() {
+      if (reduce) { preset.forEach(function (v, i) { set(i, v); }); return; }
+      var t0 = performance.now(), total = 3200;
+      (function step(t) {
+        if (touched) return;
+        var p = Math.min(1, (t - t0) / total);
+        D.forEach(function (d, i) {
+          var lo = i * 0.07, q = Math.max(0, Math.min(1, (p - lo) / (1 - lo * 1.2))), max = d.steps.length - 1, f;
+          f = q < 0.55 ? ease(q / 0.55) * max : max + (preset[i] - max) * ease((q - 0.55) / 0.45);
+          set(i, f);
+        });
+        if (p < 1) requestAnimationFrame(step); else cfg.classList.add("idle");
+      })(t0);
+    }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); demo(); } }); }, { threshold: 0.3 });
+      io.observe(cfg);
+    } else demo();
+  }
+  /* ---- shelf filter ---- */
+  var chips = document.getElementById("pchips"), shelf = document.getElementById("shelf");
+  if (chips && shelf) chips.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    [].forEach.call(chips.querySelectorAll("button"), function (x) { x.classList.toggle("on", x === b); });
+    var f = b.getAttribute("data-f");
+    [].forEach.call(shelf.children, function (p) {
+      var show = f === "all" || p.getAttribute("data-c") === f;
+      p.hidden = !show;
+      if (show && !reduce) { p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+    });
+  });
+  /* ---- distro tabs ---- */
+  [].forEach.call(document.querySelectorAll(".tabs"), function (tabs) {
+    tabs.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      [].forEach.call(tabs.querySelectorAll("button"), function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+      [].forEach.call(document.querySelectorAll(".tabp"), function (p) { p.hidden = p.getAttribute("data-p") !== b.getAttribute("data-t"); });
+    });
+  });
+  /* ---- undervolt slider: fill + auto sweep ---- */
+  var sl = document.getElementById("uvr");
+  if (sl) {
+    var track = sl.parentNode, bar = document.createElement("i"); bar.className = "uv-fillbar"; track.insertBefore(bar, sl);
+    var touchedU = false;
+    function uvfill() { bar.style.setProperty("--p", (sl.value / 170 * 100).toFixed(1)); }
+    sl.addEventListener("input", function () { touchedU = true; track.classList.remove("idle"); uvfill(); });
+    uvfill(); track.classList.add("idle");
+    function sweep() {
+      if (reduce) { sl.value = 125; sl.dispatchEvent(new Event("input")); touchedU = false; track.classList.add("idle"); return; }
+      var t0 = performance.now(), dur = 4200;
+      (function step(t) {
+        if (touchedU) return;
+        var p = Math.min(1, (t - t0) / dur), v = p < 0.6 ? ease(p / 0.6) * 160 : 160 - 35 * ease((p - 0.6) / 0.4);
+        sl.value = Math.round(v / 5) * 5; sl.dispatchEvent(new Event("input"));
+        touchedU = false; bar.style.setProperty("--p", (v / 170 * 100).toFixed(1));
+        if (p < 1) requestAnimationFrame(step); else track.classList.add("idle");
+      })(t0);
+    }
+    if ("IntersectionObserver" in window) {
+      var uio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { uio.disconnect(); sweep(); } }); }, { threshold: 0.4 });
+      uio.observe(track);
+    }
+  }
+})();
+</script>
+
+</body></html>
