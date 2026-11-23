@@ -56,11 +56,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .hl .l.a{color:#ff3b4a;color:color-mix(in oklab,#ff3b4a,#ff9a5c calc(var(--t,0)*100%))}
 .hl:hover .l:not(.a){color:#fff}
 .hl:hover .l.a{color:color-mix(in oklab,#ff6b78,#ffc08a calc(var(--t,0)*100%))}
-/* ---- red i-dot ---- */
+/* ---- red i-dot: the glyph's own dot, repainted red ---- */
 .tpi{position:relative;display:inline-block;line-height:1}
-.tpi::after{content:"";position:absolute;left:var(--cx,50%);top:.04em;width:.23em;height:.23em;border-radius:50%;background:#ff3b4a;transform:translateX(-50%);pointer-events:none}
-.hl .l.tpi{line-height:inherit}.hl .l.tpi::after{top:.07em;width:.17em;height:.17em}
-.tpw{white-space:nowrap}.sro{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hl .l.tpi{line-height:inherit}
+.tpi::after{content:attr(data-g);position:absolute;left:0;top:0;width:calc(100% + 1em);height:var(--cut,0px);overflow:hidden;color:#ff3b4a;-webkit-text-stroke:.012em #ff3b4a;pointer-events:none;letter-spacing:inherit;font:inherit;line-height:inherit;white-space:nowrap}
+.tpw{white-space:nowrap}
 /* ---- startup blur-in ---- */
 .boot,.boot2 .wrap>*:not(.hl):not(.lede){animation:bootIn 1.5s cubic-bezier(.2,.7,.2,1) both}
 .boot2 .wrap>.eyebrow{animation-delay:.15s}.boot2 .wrap>div{animation-delay:.7s}.boot2 .stats{animation-delay:.85s}
@@ -652,7 +652,7 @@ function split(el){
           if(/^\s+$/.test(p)){out.appendChild(document.createTextNode(" "));return}
           var w=document.createElement("span");w.className="w";w.setAttribute("aria-hidden","true");
           var ti=p.indexOf("ThinkPad");ti=ti<0?-1:ti+2;
-          Array.from(p).forEach(function(ch,ci){var l=document.createElement("span");l.className="l"+(acc?" a":"")+(ci===ti?" tpi":"");l.textContent=ci===ti?"\u0131":ch;l.style.setProperty("--i",idx++);w.appendChild(l)});
+          Array.from(p).forEach(function(ch,ci){var l=document.createElement("span");l.className="l"+(acc?" a":"")+(ci===ti?" tpi":"");l.textContent=ch;if(ci===ti)l.setAttribute("data-g","i");l.style.setProperty("--i",idx++);w.appendChild(l)});
           out.appendChild(w);
         });
       }else if(n.nodeType===1){walk(n,acc||n.tagName==="EM",out)}
@@ -698,28 +698,29 @@ document.querySelectorAll(".hl").forEach(split);
       if(s.indexOf("ThinkPad")!==0){frag.appendChild(document.createTextNode(s));return}
       var nw=document.createElement("span");nw.className="tpw";
       nw.appendChild(document.createTextNode("Th"));
-      var w=document.createElement("span");w.className="tpi";
-      var sr=document.createElement("span");sr.className="sro";sr.textContent="i";
-      var g=document.createElement("span");g.setAttribute("aria-hidden","true");g.textContent="\u0131";
-      w.appendChild(sr);w.appendChild(g);nw.appendChild(w);nw.appendChild(document.createTextNode(s.slice(3)));
+      var w=document.createElement("span");w.className="tpi";w.setAttribute("data-g","i");w.textContent="i";
+      nw.appendChild(w);nw.appendChild(document.createTextNode(s.slice(3)));
       frag.appendChild(nw);
     });
     n.parentNode.replaceChild(frag,n);
   });
 })();
-/* ---- centre each red dot on the dotless i (font-independent) ---- */
+/* ---- red dot = the font's own dot, clipped at the x-height (perfectly centred by construction) ---- */
 (function(){
   function fix(){
     document.querySelectorAll(".tpi").forEach(function(e){
-      var w=e.getBoundingClientRect().width,ls=parseFloat(getComputedStyle(e).letterSpacing)||0;
-      /* the box is advance + trailing letter-spacing, so the glyph's centre is (box - spacing) / 2 */
-      if(w>0)e.style.setProperty("--cx",((w-ls)/2).toFixed(2)+"px");
+      var pr=document.createElement("span");pr.style.cssText="display:inline-block;width:0;height:1ex;vertical-align:baseline;pointer-events:none";
+      e.appendChild(pr);
+      var er=e.getBoundingClientRect(),r=pr.getBoundingClientRect();
+      var baseline=r.bottom-er.top,ex=r.height;pr.remove();
+      if(ex>0&&baseline>0)e.style.setProperty("--cut",Math.max(0,baseline-ex*1.1).toFixed(2)+"px");
     });
   }
   fix();
   try{if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fix);if(document.fonts)document.fonts.addEventListener("loadingdone",fix)}catch(x){}
   window.addEventListener("load",fix);window.addEventListener("resize",fix);
-  setTimeout(fix,600);setTimeout(fix,2000);
+  document.addEventListener("animationend",function(ev){if(ev.target.classList&&(ev.target.classList.contains("l")||ev.target.classList.contains("wd")))fix()});
+  setTimeout(fix,700);setTimeout(fix,2200);setTimeout(fix,4500);
 })();
 /* ---- easter egg: click the brand (flashbang) ---- */
 (function(){
