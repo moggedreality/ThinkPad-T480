@@ -15,14 +15,14 @@ a{color:inherit;text-decoration:none}
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);background:rgba(9,7,10,.62);border-bottom:1px solid var(--line)}
 .nav nav a{transition:color .3s}.nav nav a:hover{color:var(--ink)}
 .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin:0 0 1.4rem}
-.sec{padding-block:clamp(4.5rem,10vw,8rem);border-top:1px solid var(--line)}
+.sec{padding-block:clamp(3.5rem,7vw,5.5rem);border-top:1px solid var(--line)}
 .sub{max-width:44rem;color:var(--mute);font-size:1.05rem;margin:1.4rem 0 0}
 .lede{color:#d9cbc8;font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.6;margin:0}
 .note{color:var(--mute);font-size:.92rem;line-height:1.6;margin:.5rem 0 0}
 /* ---- H3 heading component ---- */
-.h3c{font-family:var(--sf);font-weight:650;letter-spacing:-.045em;line-height:1.04;color:var(--ink);text-wrap:balance;margin:0;font-size:clamp(1.75rem,1rem + 3.4vw,3.4rem);transition:color .6s ease}
+.h3c{font-family:var(--sf);font-weight:650;letter-spacing:-.045em;line-height:1.04;color:var(--ink);text-wrap:balance;font-size:clamp(1.75rem,1rem + 3.4vw,3.4rem);transition:color .6s ease}
 .hero-h{font-size:clamp(2.7rem,1rem + 8.2vw,7.2rem);letter-spacing:-.055em;line-height:.98;max-width:12ch}
-.hero-h{padding-bottom:.14em}.ghost{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:2.5rem;font-weight:700;font-size:clamp(8rem,22vw,20rem);letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,59,74,.22);pointer-events:none;user-select:none}.hero .lede,.verdict .lede{margin-top:2.6rem!important}.uv-head b{white-space:nowrap}.v-h{max-width:14ch}
+.hero-h{padding-bottom:.14em}.ghost{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:2.5rem;font-weight:700;font-size:clamp(8rem,22vw,20rem);letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,59,74,.22);pointer-events:none;user-select:none}.hero .lede,.verdict .lede{margin-top:1.8rem!important}.uv-head b{white-space:nowrap}.v-h{max-width:14ch}
 .sec-h{max-width:18ch}
 .card-title{font-size:clamp(1.5rem,1rem + 1.8vw,2.2rem)}
 .hl .w{display:inline-block;white-space:nowrap}
@@ -37,7 +37,7 @@ a{color:inherit;text-decoration:none}
 .boot,.boot2 .wrap>*:not(.hl){animation:bootIn 1.5s cubic-bezier(.2,.7,.2,1) both}
 .boot2 .wrap>.eyebrow{animation-delay:.15s}.boot2 .lede{animation-delay:.55s}.boot2 .wrap>div{animation-delay:.7s}.boot2 .stats{animation-delay:.85s}
 @keyframes bootIn{from{opacity:0;filter:blur(26px);transform:scale(1.03)}to{opacity:1;filter:none;transform:none}}
-.hero{padding-block:clamp(5rem,11vw,9rem) clamp(4rem,8vw,6rem)}
+.hero{padding-block:clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,4rem)}
 /* ---- scroll reveal ---- */
 .reveal{opacity:0;transform:translateY(24px);filter:blur(10px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none;filter:none}
@@ -46,7 +46,7 @@ a{color:inherit;text-decoration:none}
 .btn:hover{border-color:rgba(255,59,74,.6);background:rgba(255,59,74,.1);transform:translateY(-1px)}
 .btn-p{background:linear-gradient(100deg,var(--red),var(--crimson));border-color:transparent;box-shadow:0 10px 36px rgba(255,59,74,.28)}
 .btn-p:hover{background:linear-gradient(100deg,#ff5260,#d81c32);border-color:transparent}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:5rem 0 0;padding-top:2rem;border-top:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:3.5rem 0 0;padding-top:1.6rem;border-top:1px solid var(--line)}
 .stats dt{font-size:clamp(2rem,1rem + 3vw,3.2rem);font-weight:650;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
 .stats dt small{font-size:.45em;color:var(--mute);letter-spacing:0}
 .stats dd{margin:.6rem 0 0;color:var(--mute);font-size:.85rem;line-height:1.4}
@@ -159,10 +159,14 @@ a{color:inherit;text-decoration:none}
 .tabs button[aria-selected="true"]{background:linear-gradient(100deg,var(--red),var(--crimson));color:#fff;box-shadow:0 6px 20px rgba(255,59,74,.3)}
 .tabp{animation:tabIn .5s cubic-bezier(.2,.9,.2,1)}
 @keyframes tabIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.gsteps li{min-width:0}.gsteps{grid-template-columns:minmax(0,1fr);margin:0;padding-left:1.3rem;display:grid;gap:1.2rem;color:var(--mute);font-size:.95rem;line-height:1.6;max-width:46rem}
+.gsteps{list-style:none;counter-reset:s;margin:0;padding:clamp(1.2rem,2.4vw,2rem);display:grid;grid-template-columns:minmax(0,1fr);gap:0;color:var(--mute);font-size:.95rem;line-height:1.6;max-width:52rem;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.gsteps li{min-width:0;counter-increment:s;position:relative;padding:1.3rem 0 1.3rem 3rem;border-top:1px solid var(--line)}
+.gsteps li:first-child{border-top:0;padding-top:0}.gsteps li:last-child{padding-bottom:0}
+.gsteps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1.3rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--red)}
+.gsteps li:first-child::before{top:.2rem}
 .gsteps b{color:var(--ink);font-weight:600}
 .gsteps code,.fixl code,.body code{font-family:var(--mono);font-size:.82rem;color:var(--ember);overflow-wrap:anywhere}
-pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0,0,0,.45);border:1px solid var(--line);font-family:var(--mono);font-size:.78rem;line-height:1.6;color:#ffe9e5;overflow-x:auto;max-width:100%;box-sizing:border-box}
+pre.code{margin:.7rem 0 .2rem;padding:1rem 1.1rem;border-radius:12px;background:rgba(0,0,0,.45);border:1px solid var(--line);font-family:var(--mono);font-size:.78rem;line-height:1.6;color:#ffe9e5;overflow-x:auto;max-width:100%;box-sizing:border-box}
 /* ---- accordion ---- */
 .acc{margin-top:3rem;border-top:1px solid var(--line)}
 .item{border-bottom:1px solid var(--line)}
@@ -181,6 +185,30 @@ pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0
 .body p{margin:0;font-size:.9rem;color:#cbbebb;line-height:1.6}
 .body .src{grid-column:1/-1;font-size:.78rem;color:var(--mute)}
 .fixl{margin:0;padding-left:1rem;display:grid;gap:.35rem}
+/* ---- distro watermark ---- */
+.verdict .wrap>*:not(.distros){position:relative;z-index:1}
+.distros{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:-.5rem;display:flex;flex-direction:column;align-items:flex-end;gap:.1rem;pointer-events:none;user-select:none;z-index:0}
+.distros span{font-weight:700;font-size:clamp(2.2rem,4.6vw,4.2rem);letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,59,74,.22);animation:drift 9s ease-in-out infinite alternate}
+.distros span:nth-child(even){-webkit-text-stroke-color:rgba(255,154,92,.2);animation-duration:11s;animation-direction:alternate-reverse}
+.distros span:nth-child(3n){animation-delay:-4s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-14px)}}
+@media (max-width:900px){.distros{position:static;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:.2rem 1rem;margin-bottom:1.6rem}.distros span{font-size:1.6rem}}
+@media (prefers-reduced-motion:reduce){.distros span{animation:none}}
+/* ---- sites ---- */
+.sites{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:1rem;margin-top:3rem}
+.site{position:relative;display:block;min-width:0;padding:1.3rem 1.4rem 1.4rem;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:border-color .35s,background .35s,transform .35s}
+.site:hover{border-color:rgba(255,59,74,.5);background:rgba(255,59,74,.06);transform:translateY(-2px)}
+.s-k{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember)}
+.site b{display:block;margin:.7rem 0 .3rem;font-size:1.05rem;letter-spacing:-.02em;line-height:1.3;padding-right:1.5rem}
+.s-d{display:block;color:var(--mute);font-size:.86rem;line-height:1.5}
+.site i{position:absolute;right:1.2rem;top:1.1rem;font-style:normal;color:var(--mute);transition:transform .35s,color .35s}
+.site:hover i{color:var(--red);transform:translate(2px,-2px)}
+.reddit{position:relative;display:block;grid-column:1/-1;overflow:hidden;padding:clamp(1.5rem,3vw,2.4rem);border:1px solid rgba(255,59,74,.45);border-radius:22px;background:linear-gradient(120deg,rgba(255,59,74,.2),rgba(255,154,92,.07) 60%,rgba(255,255,255,.02));box-shadow:0 20px 60px rgba(255,59,74,.12);transition:transform .4s,box-shadow .4s,border-color .4s}
+.reddit:hover{transform:translateY(-3px);border-color:rgba(255,59,74,.8);box-shadow:0 26px 70px rgba(255,59,74,.22)}
+.reddit b{display:block;margin:.8rem 0 .5rem;font-size:clamp(1.4rem,1rem + 1.6vw,2.2rem);letter-spacing:-.04em;line-height:1.15;font-weight:650;max-width:24ch}
+.reddit .s-d{max-width:40rem;font-size:.95rem}
+.reddit .go{display:inline-flex;gap:.5rem;align-items:center;margin-top:1.4rem;padding:.65rem 1.2rem;border-radius:999px;background:linear-gradient(100deg,var(--red),var(--crimson));font-weight:600;font-size:.92rem}
+.reddit .go i{font-style:normal;transition:transform .3s}.reddit:hover .go i{transform:translate(2px,-2px)}
 /* ---- verdict & footer ---- */
 .verdict{background:radial-gradient(50rem 24rem at 50% 0,rgba(255,59,74,.12),transparent 70%)}
 .sign{margin:4rem 0 0;font-size:1.3rem;font-weight:500;letter-spacing:-.02em;color:var(--ember)}
@@ -192,7 +220,7 @@ pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0
 .disc{margin:2rem 0 0;max-width:46rem;color:var(--mute);font-size:.8rem}
 @media (max-width:900px){.uv-row{grid-template-columns:1fr 1fr}.uv-row.hd{display:none}.gains{grid-template-columns:repeat(2,minmax(0,1fr))}.item .body{grid-template-columns:minmax(0,1fr);padding-left:.2rem}.heat{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:1000px){.ghost{display:none}}
-@media (max-width:780px){.cfg{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.item .tag{display:none}.mini-stats{flex-wrap:wrap;gap:1rem 2rem}}
+@media (max-width:780px){.tabs{display:flex;max-width:100%;box-sizing:border-box;border-radius:22px}.tabs button{flex:1 1 auto;padding:.6rem .8rem;font-size:.7rem}.gsteps li{padding-left:2.4rem}.cfg{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.item .tag{display:none}.mini-stats{flex-wrap:wrap;gap:1rem 2rem}}
 @media (prefers-reduced-motion:reduce){.hl .l{opacity:1;transform:none;filter:none}.hl.in .l{animation:none}.boot,.boot2 .wrap>*{animation:none}.reveal{opacity:1;transform:none;filter:none;transition:none}.tabp,.item .body{animation:none}.idle input::-webkit-slider-thumb,.uv-track.idle #uvr::-webkit-slider-thumb{animation:none}html{scroll-behavior:auto}}
 </style>
 <main>
@@ -200,7 +228,7 @@ pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0
   <div class="wrap flex items-center justify-between gap-4 py-3">
     <a href="#top" class="font-semibold tracking-tight text-ink no-underline">ThinkPad <span class="text-accent">T480</span></a>
     <nav class="hidden md:flex items-center gap-7 text-[13px] text-mute" aria-label="Sections">
-      <a href="#specs">Variants</a><a href="#mods">Mods</a><a href="#parts">Parts</a><a href="#undervolt">Undervolt</a><a href="#catch">Fixes</a><a href="#linux">Linux</a>
+      <a href="#specs">Variants</a><a href="#mods">Mods</a><a href="#parts">Parts</a><a href="#undervolt">Undervolt</a><a href="#catch">Fixes</a><a href="#linux">Linux</a><a href="#sites">Sites</a>
     </nav>
     <a href="#parts" class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[13px] text-ink no-underline transition hover:border-accent/60 hover:bg-accent/10">Parts bin</a>
   </div>
@@ -209,7 +237,7 @@ pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0
 <section class="hero boot2">
   <div class="wrap relative">
     <div class="ghost" aria-hidden="true">T480</div>
-    <p class="eyebrow">A field guide · 2018 → still shipping</p>
+    <p class="eyebrow">A field guide · 2018 → floating around in the market</p>
     <h1 class="h3c hl hero-h" data-d="450">The ThinkPad you <em>can't kill.</em></h1>
     <p class="lede mt-7 max-w-2xl">Years after launch, the T480 is still the laptop people open up, flash, rebuild and daily-drive. Two real RAM slots, a swappable battery system, a keyboard that earned its reputation, and a modding scene that never ran out of ideas. Everything here comes from owners, forum threads and independent reviews.</p>
     <div class="mt-9 flex flex-wrap gap-3">
@@ -308,8 +336,7 @@ pre.code{margin:.6rem 0;padding:1rem 1.1rem;border-radius:12px;background:rgba(0
       <li class="reveal"><b>BOE0791 IPS or 4K panel</b><span>With the 40-pin cable.</span></li>
       <li class="reveal"><b>BIOS whitelist removal</b><span>CH341A clip, soldering skills.</span></li>
       <li class="reveal"><b>Mix-and-match batteries</b><span>Internal 24 Wh plus a 72 Wh pack.</span></li>
-      <li class="reveal"><b>Magnesium lid</b><span>Swap the plastic half.</span></li>
-      <li class="reveal"><b>eGPU over Thunderbolt 3</b><span>Through the one real TB3 port.</span></li>
+            <li class="reveal"><b>eGPU over Thunderbolt 3</b><span>Through the one real TB3 port.</span></li>
     </ul>
 
     <div class="grid gap-5 lg:grid-cols-2 mt-14">
@@ -528,7 +555,8 @@ sudo undervolt --read</pre></li>
 </section>
 
 <section id="linux" class="sec verdict">
-  <div class="wrap">
+  <div class="wrap relative">
+    <div class="distros" aria-hidden="true"><span>Arch</span><span>Debian</span><span>Ubuntu</span><span>Fedora</span><span>NixOS</span></div>
     <p class="eyebrow">07 · Verdict</p>
     <h2 class="h3c hl hero-h v-h">Run it on <em>Linux.</em></h2>
     <p class="lede mt-7 max-w-2xl">The T480 is old enough that every quirk has been found and written down, and Linux is where that knowledge lives. Install it on Arch, Ubuntu or whatever you like, and you get the most support the machine can have.</p>
@@ -539,6 +567,20 @@ sudo undervolt --read</pre></li>
       <div class="card reveal"><h3 class="card-t">Parts you can still buy</h3><p class="note">Kits, panels, batteries and keyboards are available years after launch.</p></div>
     </div>
     <p class="sign reveal">— an intensive ThinkPad user</p>
+  </div>
+</section>
+<section id="sites" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">08 · Go deeper</p>
+    <h2 class="h3c hl sec-h">Pages built for <em>the T480.</em></h2>
+    <p class="sub">Guides, docs and threads about this exact machine. Each one opens in a new tab.</p>
+    <div class="sites"><a class="site reveal" href="https://wiki.archlinux.org/title/Lenovo_ThinkPad_T480" target="_blank" rel="noopener"><span class="s-k">Arch Wiki</span><b>Lenovo ThinkPad T480</b><span class="s-d">Known issues, firmware and power settings on Linux.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-t-series-laptops/thinkpad-t480-type-20l5-20l6" target="_blank" rel="noopener"><span class="s-k">Lenovo Support</span><b>T480 type 20L5 / 20L6</b><span class="s-d">Drivers, BIOS, manuals and parts listings.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://www.ifixit.com/Answers/Device/Lenovo_ThinkPad_T480/All" target="_blank" rel="noopener"><span class="s-k">iFixit</span><b>T480 answers and repair</b><span class="s-d">Community repair questions for the T480.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://www.notebookcheck.net/Lenovo-ThinkPad-T480-Series.299710.0.html" target="_blank" rel="noopener"><span class="s-k">Notebookcheck</span><b>T480 series and variants</b><span class="s-d">Every configuration with benchmarks and reviews.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://doc.coreboot.org/mainboard/lenovo/t480.html" target="_blank" rel="noopener"><span class="s-k">coreboot docs</span><b>T480 / T480s mainboard</b><span class="s-d">What works and what doesn't under coreboot.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://libreboot.org/docs/install/t480.html" target="_blank" rel="noopener"><span class="s-k">Libreboot</span><b>Install on the T480</b><span class="s-d">Flashing guide for Libreboot.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://forum.qubes-os.org/t/lenovo-thinkpad-t480/3290/67" target="_blank" rel="noopener"><span class="s-k">Qubes forum</span><b>Lenovo ThinkPad T480 thread</b><span class="s-d">Long-running Qubes compatibility discussion.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://www.xyte.ch/shop/t25-frankenpad-kit/" target="_blank" rel="noopener"><span class="s-k">XY Tech</span><b>T25 FrankenPad kit</b><span class="s-d">Bottom halves, panels and parts for the T480.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://kitsunyan.github.io/blog/frankenpad-story.html" target="_blank" rel="noopener"><span class="s-k">kitsunyan</span><b>A FrankenPad Story</b><span class="s-d">The T25-body T480 build write-up.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://github.com/dipch/Thinkpad-T480-cpu-throttling-fix-linux" target="_blank" rel="noopener"><span class="s-k">GitHub · dipch</span><b>T480 throttling fix for Linux</b><span class="s-d">Power-limit and undervolt settings for the T480s.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://www.bios-mods.com/forum/Thread-Lenovo-T480-Bios-Mod" target="_blank" rel="noopener"><span class="s-k">bios-mods.com</span><b>Lenovo T480 BIOS mod thread</b><span class="s-d">Modded BIOS requests and discussion.</span><i aria-hidden="true">↗</i></a><a class="site reveal" href="https://www.forum.thinkpads.com/viewtopic.php?p=882202" target="_blank" rel="noopener"><span class="s-k">ThinkPads forum</span><b>T480 modding guide</b><span class="s-d">The forum thread behind the mod wall.</span><i aria-hidden="true">↗</i></a><a class="reddit reveal" href="https://www.reddit.com/r/thinkpad/search/?q=T480&amp;restrict_sr=1" target="_blank" rel="noopener">
+      <span class="s-k">Where the real talk happens</span>
+      <b>r/thinkpad on Reddit: the T480 threads</b>
+      <span class="s-d">Owner questions, mod photos, undervolt results and "should I buy this one" threads, searched for T480.</span>
+      <span class="go">Open on Reddit <i aria-hidden="true">↗</i></span>
+    </a>
+    </div>
   </div>
 </section>
 </main>
